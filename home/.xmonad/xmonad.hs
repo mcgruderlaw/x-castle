@@ -51,7 +51,9 @@ myConfig = kdeConfig
     , handleEventHook = fadeWindowsEventHook
     {- ... -}
 } `additionalKeys`
-    [ (( mod4Mask, xK_f), spawn "firefox")]
+    [ (( mod4Mask, xK_f), spawn "firefox")
+	, (( mod4Mask, xK_p), spawn "dmenu")
+	]
 
 myBorderWidth   = 2
 myFocusedBorderColor    = "#dc322f"

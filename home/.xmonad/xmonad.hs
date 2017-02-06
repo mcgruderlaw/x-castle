@@ -52,7 +52,7 @@ myConfig = kdeConfig
     {- ... -}
 } `additionalKeys`
     [ (( mod4Mask, xK_f), spawn "firefox")
-	, (( mod4Mask, xK_p), spawn "dmenu")
+	, (( mod4Mask, xK_p), spawn "dmenu_run")
 	]
 
 myBorderWidth   = 2

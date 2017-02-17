@@ -79,8 +79,8 @@ myManageHook = composeAll
 --                        ,                opacity 0.75
 --                        ]
 
-myFadeHook = composeAll [opacity 0.90
-                        , isUnfocused --> opacity 0.75
+myFadeHook = composeAll [opacity 0.98
+                        , isUnfocused --> opacity 0.85
                         ]
 
 -- myLogHook = fadeWindowsLogHook myFadeHook

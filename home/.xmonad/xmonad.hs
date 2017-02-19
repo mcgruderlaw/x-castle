@@ -70,7 +70,7 @@ myWorkspaces = [ "Web", "Drafting", "Shell1", "Shell2", "Mail", "Music", "IRC", 
 
 myManageHook = composeAll
      [ className =? "Alsamixer" --> doFloat
-     , className =? "MPlayer" --> doFloat
+     , className =? "mpv" --> doFloat
      ]
 
 -- myEventHook = fadeWindowsEventHook {- ... -}

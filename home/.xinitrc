@@ -30,7 +30,7 @@ xcompmgr -r7 -o 0.25 -l-10 -t-8 -D7 &
 
 #eval $(ssh-agent)
 
-sh ~/scripts/.fehbg &
+sh ~/Document/scripts/.fehbg &
 
 /usr/bin/VBoxClient-all
 

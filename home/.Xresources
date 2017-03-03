@@ -10,7 +10,8 @@ URxvt*fading          : 10%
 URxvt*internalBorder  : 5
 URxvt*scrollBar       : false
 URxvt*pointerBlank    : true
-URxvt*font            : xft:Inconsolata:bold:size=14,xft:Monospace
+URxvt*font            : xft:Inconsolata:size=16,xft:Monospace
+!URxvt*font            : xft:Inconsolata:bold:size=16,xft:Monospace
 URxvt*lsp             : 50
 URxvt*perl-ext-common : default,matcher
 URxvt*urlLauncher     : /usr/bin/chromium

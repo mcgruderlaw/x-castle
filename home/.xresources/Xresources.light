@@ -1,11 +1,17 @@
+Xcursor.theme: Bluecurve
+
 xterm*faceName: xft:Inconsolata:size=12:antialias=on
 xterm*termName: xterm-256color
 xterm*scaleHeight: 1.2
 
-URxvt*font: xft:Inconsolata:size=12:antialias=on
+URxvt*depth : 32
+URxvt*buffered: true
+URxvt*font: xft:Inconsolata:size=15:antialias=false,xft:Liberation-fonts:antialias=false,xft:NotoColorEmoji:antialias=false,xft:Libertine:antialias=false
 URxvt*termName: rxvt-unicode-256color
 URxvt*scrollBar: false
 URxvt*lineSpace: 5
+URxvt*iso14755: false
+URxvt*iso14755_52: false
 
 #define S_base03        #002b36
 #define S_base02        #073642

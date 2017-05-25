@@ -6,7 +6,7 @@ xterm*scaleHeight: 1.2
 
 URxvt*depth : 32
 URxvt*buffered: true
-URxvt*font: xft:Menlo:size=12:antialias=true,xft:Liberation-fonts:antialias=true,xft:NotoColorEmoji:antialias=true,xft:Libertine:antialias=true
+URxvt*font: xft:Menlo:size=10:antialias=true,xft:Liberation-fonts:antialias=true,xft:NotoColorEmoji:antialias=true,xft:Libertine:antialias=true
 URxvt*termName: rxvt-unicode-256color
 URxvt*scrollBar: false
 URxvt*lineSpace: 5

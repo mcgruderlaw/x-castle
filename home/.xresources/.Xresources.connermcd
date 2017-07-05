@@ -10,9 +10,9 @@ URxvt*fading          : 10%
 URxvt*internalBorder  : 5
 URxvt*scrollBar       : false
 URxvt*pointerBlank    : true
-! URxvt*font            : xft:Inconsolata:size=12,xft:Monospace
-URxvt*font            : xft:Menlo:size=12,xft:Monospace
-URxvt*lineSpace       : 16
+URxvt*font            : xft:Inconsolata:size=12,xft:Monospace
+! URxvt*font            : xft:Menlo:size=12,xft:Monospace
+URxvt*lineSpace       : 12
 URxvt*perl-ext-common : default,matcher
 URxvt*urlLauncher     : /usr/bin/firefox
 URxvt*matcher.button  : 1

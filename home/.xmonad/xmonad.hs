@@ -80,7 +80,7 @@ myManageHook = composeAll
 --                        ]
 
 myFadeHook = composeAll [opacity 0.98
-                        , isUnfocused --> opacity 0.85
+                        , isUnfocused --> opacity 0.95
                         ]
 
 -- myLogHook = fadeWindowsLogHook myFadeHook
@@ -122,8 +122,8 @@ nobordersLayout = smartBorders $ Full
 myStartupHook :: X ()
 myStartupHook = do
     ewmhDesktopsStartup
---    spawnOn "Web" "firefox"
---    spawnOn "Drafting" "urxvt"
+    spawnOn "Drafting" "urxvt"
+    spawnOn "Web" "firejail firefox"
     --spawnOn "Shell1" "xterm"
     --spawnOn "Mail" "mutt"
     --spawnOn "Music" "vimpc"

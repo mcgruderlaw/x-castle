@@ -55,7 +55,7 @@ myConfig = kdeConfig
 	, (( mod4Mask, xK_p), spawn "dmenu_run")
 	]
 
-myBorderWidth   = 2
+myBorderWidth   = 4
 myFocusedBorderColor    = "#dc322f"
 -- myFocusedBorderColor    = "#005f00"
 -- myFocusedBorderColor    = "#ff0000"
@@ -65,8 +65,8 @@ myModMask       = mod4Mask
 myTerminal      = "urxvt"
 --myTerminal      = "konsole"
 -- myWorkspaces = [ "Web", "Evernote", "Drafting", "Shell", "Mail", "Music", "IRC", "News", "Transmission", "Misc."]
-myWorkspaces = [ "Web", "Drafting", "Shell1", "Shell2", "Mail", "Music", "IRC", "News", "Misc."]
--- myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+-- myWorkspaces = [ "Web", "Drafting", "Shell1", "Shell2", "Mail", "Music", "IRC", "News", "Misc."]
+myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 myManageHook = composeAll
      [ className =? "Alsamixer" --> doFloat
@@ -122,8 +122,8 @@ nobordersLayout = smartBorders $ Full
 myStartupHook :: X ()
 myStartupHook = do
     ewmhDesktopsStartup
-    spawnOn "Drafting" "urxvt"
-    spawnOn "Web" "firejail firefox"
+    spawnOn "1" "urxvt"
+    --spawnOn "Web" "firejail firefox"
     --spawnOn "Shell1" "xterm"
     --spawnOn "Mail" "mutt"
     --spawnOn "Music" "vimpc"

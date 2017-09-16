@@ -20,7 +20,7 @@ URxvt*iso14755_52: false
 
 URxvt*background:            #000000
 URxvt*foreground:            S_base0
-URxvt*fadeColor:             S_base03
+URxvt*fadeColor:             #000000
 URxvt*cursorColor:           S_base1
 URxvt*pointerColorBackground:S_base01
 URxvt*pointerColorForeground:S_base1

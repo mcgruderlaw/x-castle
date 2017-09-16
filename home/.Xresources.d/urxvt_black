@@ -21,9 +21,9 @@ URxvt*iso14755_52: false
 URxvt*background:            #000000
 URxvt*foreground:            S_base0
 URxvt*fadeColor:             #000000
-URxvt*cursorColor:           S_base1
-URxvt*pointerColorBackground:S_base01
-URxvt*pointerColorForeground:S_base1
+!! URxvt*cursorColor:           S_base1
+!! URxvt*pointerColorBackground:S_base01
+!! URxvt*pointerColorForeground:S_base1
 
 #define S_yellow        #b58900
 #define S_orange        #cb4b16

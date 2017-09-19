@@ -2,7 +2,7 @@ Xcursor.theme: Bluecurve
 
 URxvt*depth : 32
 URxvt*buffered: true
-URxvt*font: xft:Monofur:size=10:antialias=true,xft:Liberation-fonts:antialias=false,xft:NotoColorEmoji:antialias=false,xft:Libertine:antialias=false
+URxvt*font: xft:Monofur:size=12:antialias=true,xft:Liberation-fonts:antialias=false,xft:NotoColorEmoji:antialias=false,xft:Libertine:antialias=false
 URxvt*termName: rxvt-unicode-256color
 URxvt*scrollBar: false
 URxvt*lineSpace: 12
@@ -35,8 +35,8 @@ URxvt*fadeColor:             #000000
 #define S_green         #859900
 
 !! black dark/light
-URxvt*color0:                S_base02
-URxvt*color8:                S_base03
+!!URxvt*color0:                S_base02
+!!URxvt*color8:                S_base03
 
 !! red dark/light
 URxvt*color1:                S_red

@@ -5,7 +5,7 @@ URxvt*buffered: true
 URxvt*font: xft:Monofur:size=12:antialias=true,xft:Liberation-fonts:antialias=true,xft:NotoColorEmoji:antialias=true,xft:Libertine:antialias=true
 URxvt*termName: rxvt-unicode-256color
 URxvt*scrollBar: false
-URxvt*lineSpace: 9
+URxvt*lineSpace: 12
 URxvt*iso14755: false
 URxvt*iso14755_52: false
 

@@ -9,6 +9,15 @@ URxvt*lineSpace: 15
 URxvt*iso14755: false
 URxvt*iso14755_52: false
 
+URxvt.perl-ext-common: default,selection-to-clipboard,pasta,matcher,keyboard-select
+URxvt.keysym.Control-u: perl:url-select:select_next
+URxvt.url-launcher: /home/dmc/.bin/qt.sh
+URxvt.underlineURLs: True
+URxvt.matcher.button: 1
+URxvt.keysym.Control-Escape: perl:keyboard-select:activate
+URxvt.keysym.Control-Shift-V: perl:keyboard-select:search
+URxvt.clipboard.autocopy: true
+
 #define S_base03        #002b36
 #define S_base02        #073642
 #define S_base01        #586e75

@@ -52,8 +52,8 @@ myConfig = kdeConfig
     {- ... -}
 } `additionalKeys`
     [ (( mod4Mask, xK_f), spawn "firefox")
-	, (( mod4Mask, xK_p), spawn "dmenu_run")
-	]
+    , (( mod4Mask, xK_p), spawn "dmenu_run")
+    ]
 
 myBorderWidth   = 4
 myFocusedBorderColor    = "#dc322f"

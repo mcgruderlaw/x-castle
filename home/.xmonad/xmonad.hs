@@ -33,8 +33,8 @@ myPP = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "<" ">" }
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
 
---myConfig = defaultConfig 
-myConfig = kdeConfig
+myConfig = defaultConfig 
+--myConfig = kdeConfig
     { terminal           = myTerminal
     , modMask            = myModMask
     , borderWidth        = myBorderWidth
@@ -44,15 +44,16 @@ myConfig = kdeConfig
 --    , keys              = myKeys
     , layoutHook        = myLayout
     , manageHook        = myManageHook
---    , handleEventHook   = myEventHook
+    , handleEventHook   = myEventHook
     , startupHook       = myStartupHook
-    --, logHook           = myLogHook
-    , logHook           = fadeWindowsLogHook myFadeHook
-    , handleEventHook = fadeWindowsEventHook
+    , logHook           = myLogHook
+    --, logHook           = fadeWindowsLogHook myFadeHook
+    --, handleEventHook = fadeWindowsEventHook
     {- ... -}
 } `additionalKeys`
     [ (( mod4Mask, xK_f), spawn "firefox")
     , (( mod4Mask, xK_p), spawn "dmenu_run")
+    , (( mod4Mask, xK_q), spawn "qt.sh")
     ]
 
 myBorderWidth   = 4
@@ -71,9 +72,10 @@ myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 myManageHook = composeAll
      [ className =? "Alsamixer" --> doFloat
      , className =? "mpv" --> doFloat
+     , className =? "feh" --> doFloat
      ]
 
--- myEventHook = fadeWindowsEventHook {- ... -}
+myEventHook = fadeWindowsEventHook {- ... -}
 
 --myFadeHook = composeAll [isUnfocused --> opacity 0.60
 --                        ,                opacity 0.75
@@ -83,7 +85,7 @@ myFadeHook = composeAll [opacity 0.98
                         , isUnfocused --> opacity 0.95
                         ]
 
--- myLogHook = fadeWindowsLogHook myFadeHook
+myLogHook = fadeWindowsLogHook myFadeHook
 myLayout = nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR
 --myLayout = mkToggle (single REFLECTX) $
 --           mkToggle (single REFLECTY) $
@@ -118,12 +120,12 @@ nobordersLayout = smartBorders $ Full
 --      , ((modm .|. controlMask, xK_y), sendMessage $ Toggle REFLECTY)
 
 
--- myStartupHook = ewmhDesktopsStartup
+--myStartupHook = ewmhDesktopsStartup
 myStartupHook :: X ()
 myStartupHook = do
     ewmhDesktopsStartup
-    spawnOn "1" "urxvt"
-    --spawnOn "Web" "firejail firefox"
+    spawnOn "1" "qt.sh"
+    spawnOn "2" "urxvt"
     --spawnOn "Shell1" "xterm"
     --spawnOn "Mail" "mutt"
     --spawnOn "Music" "vimpc"

@@ -12,6 +12,7 @@ import XMonad.Actions.CycleWS
 import XMonad.Actions.SpawnOn
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.EwmhDesktops
@@ -26,6 +27,8 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.ToggleLayouts
 import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.FadeWindows
+import XMonad.Util.Run
+import System.IO
 
 main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 myBar = "xmobar"
@@ -41,7 +44,7 @@ myConfig = defaultConfig
     , normalBorderColor  = myNormalBorderColor
     , focusedBorderColor = myFocusedBorderColor
     , workspaces         = myWorkspaces
---    , keys              = myKeys
+    --, keys              = myKeys
     , layoutHook        = myLayout
     , manageHook        = myManageHook
     , handleEventHook   = myEventHook
@@ -51,11 +54,12 @@ myConfig = defaultConfig
     --, handleEventHook = fadeWindowsEventHook
     {- ... -}
 } `additionalKeys`
-    [ (( mod4Mask, xK_f), spawn "firefox")
-    , (( mod4Mask, xK_p), spawn "dmenu_run")
-    , (( mod4Mask, xK_q), spawn "qt.sh")
+    [ (( myModMask, xK_f), safeSpawn "firefox" [])
+    , (( myModMask, xK_p), spawn "dmenu_run")
+    , (( myModMask, xK_q), spawn "qt.sh")
+    , (( myModMask, xK_r), safeRunInTerm "urxvt" [])
     ]
-
+--myKeys = [ ((mod4Mask, xK_m), spawn "mutt") ]
 myBorderWidth   = 4
 myFocusedBorderColor    = "#dc322f"
 -- myFocusedBorderColor    = "#005f00"
@@ -73,7 +77,11 @@ myManageHook = composeAll
      [ className =? "Alsamixer" --> doFloat
      , className =? "mpv" --> doFloat
      , className =? "feh" --> doFloat
+     , className =? "ranger" --> doFloat
+     , appName =? "qt.sh" --> doShift "1"
      ]
+
+    <+> manageDocks <+> manageHook defaultConfig
 
 myEventHook = fadeWindowsEventHook {- ... -}
 
@@ -121,11 +129,12 @@ nobordersLayout = smartBorders $ Full
 
 
 --myStartupHook = ewmhDesktopsStartup
-myStartupHook :: X ()
+--myStartupHook :: X ()
 myStartupHook = do
     ewmhDesktopsStartup
     spawnOn "1" "qt.sh"
     spawnOn "2" "urxvt"
+    spawnOn "5" "mpv"
     --spawnOn "Shell1" "xterm"
     --spawnOn "Mail" "mutt"
     --spawnOn "Music" "vimpc"

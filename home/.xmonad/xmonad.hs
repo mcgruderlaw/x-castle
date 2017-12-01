@@ -62,10 +62,11 @@ myConfig = defaultConfig
     , (( myModMask, xK_y), spawn "urxvt -e mpsyt")
     ]
 --myKeys = [ ((mod4Mask, xK_m), spawn "mutt") ]
-myBorderWidth   = 4
+myBorderWidth   = 1
 --myFocusedBorderColor    = "#dc322f"
-myFocusedBorderColor    = "#005f00"
+--myFocusedBorderColor    = "#005f00"
 -- myFocusedBorderColor    = "#ff0000"
+myFocusedBorderColor    = "#FFFFFF"
 -- myFocusedBorderColor    = "#222200"
 myNormalBorderColor     = "#000000"
 myModMask       = mod4Mask
@@ -80,9 +81,10 @@ myManageHook = composeAll
      , className =? "Alsamixer" --> doFloat
      , className =? "mpv" --> doFloat
      , className =? "feh" --> doFloat
-     , appName =? "ranger" --> doF W.swapDown
+     --, appName =? "ranger" --> doF W.swapDown
+     , appName =? "ranger" --> doFloat
      , appName =? "qt.sh" --> doShift "1"
-     , insertPosition End Newer
+     , insertPosition Below Newer
      , transience'
      ]
 

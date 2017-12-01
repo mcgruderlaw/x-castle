@@ -1,6 +1,7 @@
 import XMonad
 import XMonad.Config.Kde
 import Data.Monoid
+import Data.Ratio
 import System.Exit
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
@@ -10,6 +11,7 @@ import Graphics.X11.ExtraTypes.XF86
 import XMonad.Actions.GridSelect
 import XMonad.Actions.CycleWS
 import XMonad.Actions.SpawnOn
+import XMonad.Actions.FloatKeys
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.ManageDocks
@@ -60,6 +62,16 @@ myConfig = defaultConfig
     , (( myModMask, xK_r), spawn "urxvt -e ranger")
     , (( myModMask, xK_n), spawn "urxvt -e newsbeuter")
     , (( myModMask, xK_y), spawn "urxvt -e mpsyt")
+    , (( myModMask, xK_m), spawn "urxvt -e mutt")
+    , (( myModMask,               xK_d     ), withFocused (keysResizeWindow (-10,-10) (1%2,1%2)))
+    , (( myModMask,               xK_s     ), withFocused (keysResizeWindow (10,10) (1%2,1%2)))
+    , (( myModMask .|. shiftMask, xK_d     ), withFocused (keysAbsResizeWindow (-10,-10) (1024,752)))
+    , (( myModMask .|. shiftMask, xK_s     ), withFocused (keysAbsResizeWindow (10,10) (1024,752)))
+    , (( myModMask,               xK_a     ), withFocused (keysMoveWindowTo (800,384) (1%2,1%2)))
+    , (( myModMask,               xK_Right     ), withFocused (keysMoveWindow (10,0) ))
+    , (( myModMask,               xK_Down     ), withFocused (keysMoveWindow (0,10) ))
+    , (( myModMask,               xK_Left     ), withFocused (keysMoveWindow (-10,0) ))
+    , (( myModMask,               xK_Up     ), withFocused (keysMoveWindow (0,-10) ))
     ]
 --myKeys = [ ((mod4Mask, xK_m), spawn "mutt") ]
 myBorderWidth   = 1
@@ -84,7 +96,7 @@ myManageHook = composeAll
      --, appName =? "ranger" --> doF W.swapDown
      , appName =? "ranger" --> doFloat
      , appName =? "qt.sh" --> doShift "1"
-     , insertPosition Below Newer
+     --, insertPosition Below Newer
      , transience'
      ]
 

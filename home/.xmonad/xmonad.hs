@@ -57,12 +57,14 @@ myConfig = defaultConfig
     [ (( myModMask, xK_f), safeSpawn "firefox" [])
     , (( myModMask, xK_p), spawn "dmenu_run")
     , (( myModMask, xK_q), spawn "qt.sh")
-    , (( myModMask, xK_r), safeRunInTerm "urxvt" [])
+    , (( myModMask, xK_r), spawn "urxvt -e ranger")
+    , (( myModMask, xK_n), spawn "urxvt -e newsbeuter")
+    , (( myModMask, xK_y), spawn "urxvt -e mpsyt")
     ]
 --myKeys = [ ((mod4Mask, xK_m), spawn "mutt") ]
 myBorderWidth   = 4
-myFocusedBorderColor    = "#dc322f"
--- myFocusedBorderColor    = "#005f00"
+--myFocusedBorderColor    = "#dc322f"
+myFocusedBorderColor    = "#005f00"
 -- myFocusedBorderColor    = "#ff0000"
 -- myFocusedBorderColor    = "#222200"
 myNormalBorderColor     = "#000000"
@@ -74,11 +76,14 @@ myTerminal      = "urxvt"
 myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 myManageHook = composeAll
-     [ className =? "Alsamixer" --> doFloat
+     [ isFullscreen        --> doFullFloat
+     , className =? "Alsamixer" --> doFloat
      , className =? "mpv" --> doFloat
      , className =? "feh" --> doFloat
-     , className =? "ranger" --> doFloat
+     , appName =? "ranger" --> doF W.swapDown
      , appName =? "qt.sh" --> doShift "1"
+     , insertPosition End Newer
+     , transience'
      ]
 
     <+> manageDocks <+> manageHook defaultConfig
@@ -132,9 +137,9 @@ nobordersLayout = smartBorders $ Full
 --myStartupHook :: X ()
 myStartupHook = do
     ewmhDesktopsStartup
-    spawnOn "1" "qt.sh"
-    spawnOn "2" "urxvt"
-    spawnOn "5" "mpv"
+--    spawnOn "1" "qt.sh"
+--    spawnOn "2" "urxvt"
+--    spawnOn "5" "mpv"
     --spawnOn "Shell1" "xterm"
     --spawnOn "Mail" "mutt"
     --spawnOn "Music" "vimpc"

@@ -1,36 +1,40 @@
 import XMonad
-import XMonad.Config.Kde
 import Data.Monoid
 import Data.Ratio
-import System.Exit
-import qualified XMonad.StackSet as W
-import qualified Data.Map as M
-import XMonad.Util.EZConfig
-import XMonad.Util.Run (safeSpawn)
 import Graphics.X11.ExtraTypes.XF86  
-import XMonad.Actions.GridSelect
+import System.Exit
+import System.IO
 import XMonad.Actions.CycleWS
-import XMonad.Actions.SpawnOn
 import XMonad.Actions.FloatKeys
+import XMonad.Actions.GridSelect
+import XMonad.Actions.SpawnOn
+import XMonad.Config.Kde
 import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.UrgencyHook
-import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.FadeInactive
+import XMonad.Hooks.FadeWindows
+import XMonad.Hooks.InsertPosition
+import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.NoBorders
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Reflect
-import XMonad.Layout.ResizableTile
 import XMonad.Layout.Renamed
+import XMonad.Layout.ResizableTile
+import XMonad.Layout.SimpleFloat
 import XMonad.Layout.Spacing
 import XMonad.Layout.Tabbed 
 import XMonad.Layout.ToggleLayouts
-import XMonad.Hooks.FadeInactive
-import XMonad.Hooks.FadeWindows
+import XMonad.Prompt
+import XMonad.Prompt.Shell
+import XMonad.Prompt.XMonad
+import XMonad.Util.EZConfig
 import XMonad.Util.Run
-import System.IO
+import XMonad.Util.Run (safeSpawn)
+import qualified Data.Map as M
+import qualified XMonad.StackSet as W
 
 main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 myBar = "xmobar"
@@ -46,7 +50,7 @@ myConfig = defaultConfig
     , normalBorderColor  = myNormalBorderColor
     , focusedBorderColor = myFocusedBorderColor
     , workspaces         = myWorkspaces
-    --, keys              = myKeys
+    , keys              = myKeys
     , layoutHook        = myLayout
     , manageHook        = myManageHook
     , handleEventHook   = myEventHook
@@ -55,14 +59,116 @@ myConfig = defaultConfig
     --, logHook           = fadeWindowsLogHook myFadeHook
     --, handleEventHook = fadeWindowsEventHook
     {- ... -}
-} `additionalKeys`
-    [ (( myModMask, xK_f), safeSpawn "firefox" [])
-    , (( myModMask, xK_p), spawn "dmenu_run")
-    , (( myModMask, xK_q), spawn "qt.sh")
-    , (( myModMask, xK_r), spawn "urxvt -e ranger")
-    , (( myModMask, xK_n), spawn "urxvt -e newsbeuter")
-    , (( myModMask, xK_y), spawn "urxvt -e mpsyt")
-    , (( myModMask, xK_m), spawn "urxvt -e mutt")
+}
+
+--`additionalKeys` [ (( myModMask, xK_f), safeSpawn "firefox" [])
+--   , (( myModMask, xK_p), spawn "dmenu_run")
+--   , (( myModMask, xK_q), spawn "qt.sh")
+--   , (( myModMask, xK_r), spawn "urxvt -e ranger")
+--   , (( myModMask, xK_n), spawn "urxvt -e newsbeuter")
+--   , (( myModMask, xK_y), spawn "urxvt -e mpsyt")
+--   , (( myModMask, xK_m), spawn "urxvt -e mutt")
+--   , (( myModMask,               xK_d     ), withFocused (keysResizeWindow (-10,-10) (1%2,1%2)))
+--   , (( myModMask,               xK_s     ), withFocused (keysResizeWindow (10,10) (1%2,1%2)))
+--   , (( myModMask .|. shiftMask, xK_d     ), withFocused (keysAbsResizeWindow (-10,-10) (1024,752)))
+--   , (( myModMask .|. shiftMask, xK_s     ), withFocused (keysAbsResizeWindow (10,10) (1024,752)))
+--   , (( myModMask,               xK_a     ), withFocused (keysMoveWindowTo (800,384) (1%2,1%2)))
+--   , (( myModMask,               xK_Right     ), withFocused (keysMoveWindow (10,0) ))
+--   , (( myModMask,               xK_Down     ), withFocused (keysMoveWindow (0,10) ))
+--   , (( myModMask,               xK_Left     ), withFocused (keysMoveWindow (-10,0) ))
+--   , (( myModMask,               xK_Up     ), withFocused (keysMoveWindow (0,-10) ))
+--   ]
+--
+myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
+	 -- github boylemic/configs
+     -- launch a terminal
+    [ ((myModMask,              xK_Return), spawn "urxvt")
+ 
+    -- launch dmenu
+    --, ((myModMask,               xK_d     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
+    , ((myModMask,               xK_p     ), spawn "dmenu_run")
+ 
+    -- launch gmrun
+    --, ((myModMask .|. shiftMask, xK_p     ), spawn "gmrun")
+ 
+    -- close focused window
+    , ((myModMask .|. shiftMask, xK_c     ), kill)
+ 
+     -- Rotate through the available layout algorithms
+    , ((myModMask,               xK_space ), sendMessage NextLayout)
+ 
+    --  Reset the layouts on the current workspace to default
+    , ((myModMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
+ 
+    -- Resize viewed windows to the correct size
+    , ((myModMask,               xK_n     ), refresh)
+ 
+    -- Move focus to the next window
+    , ((myModMask,               xK_Tab   ), windows W.focusDown)
+ 
+    -- Move focus to the next window
+    , ((myModMask,               xK_j     ), windows W.focusDown)
+ 
+    -- Move focus to the previous window
+    , ((myModMask,               xK_k     ), windows W.focusUp  )
+    
+    -- Volume Control
+    ,((0, xF86XK_AudioMute), spawn "amixer set Master toggle")
+    , ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 5%- unmute")
+    , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 5%+ unmute")
+    
+    -- Brightness Control
+    , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
+    , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
+ 
+    -- Move focus to the master window
+    , ((myModMask,               xK_m     ), windows W.focusMaster  )
+ 
+    -- Swap the focused window and the master window
+    , ((myModMask .|. shiftMask, xK_Return), windows W.swapMaster)
+ 
+    -- Swap the focused window with the next window
+    , ((myModMask .|. shiftMask, xK_j     ), windows W.swapDown  )
+ 
+    -- Swap the focused window with the previous window
+    , ((myModMask .|. shiftMask, xK_k     ), windows W.swapUp    )
+ 
+    -- Shrink the master area
+    , ((myModMask,               xK_h     ), sendMessage Shrink)
+ 
+    -- Expand the master area
+    , ((myModMask,               xK_l     ), sendMessage Expand)
+ 
+    -- Push window back into tiling
+    , ((myModMask,               xK_t     ), withFocused $ windows . W.sink)
+ 
+    -- Increment the number of windows in the master area
+    , ((myModMask              , xK_comma ), sendMessage (IncMasterN 1))
+ 
+    -- Deincrement the number of windows in the master area
+    , ((myModMask              , xK_period), sendMessage (IncMasterN (-1)))
+ 
+    -- Toggle the status bar gap
+    -- Use this binding with avoidStruts from Hooks.ManageDocks.
+    -- See also the statusBar function from Hooks.DynamicLog.
+    --
+    -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
+ 
+    -- Quit xmonad
+    , ((myModMask .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
+ 
+    -- Restart xmonad
+    , ((myModMask              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+
+    --My Added Ones
+    , (( myModMask, xK_f), safeSpawn "firefox" [])
+    --, (( myModMask, xK_p), spawn "dmenu_run")
+    , (( myModMask, xK_w), spawn "qt.sh")
+    , (( myModMask .|. shiftMask, xK_w ), spawn "urxvt -e w3m")
+    , (( myModMask .|. shiftMask, xK_r), spawn "urxvt -e ranger")
+    , (( myModMask .|. shiftMask, xK_n ), spawn "urxvt -e newsbeuter")
+    , (( myModMask .|. shiftMask, xK_y), spawn "urxvt -e mpsyt")
+    , (( myModMask .|. shiftMask, xK_m), spawn "urxvt -e mutt")
     , (( myModMask,               xK_d     ), withFocused (keysResizeWindow (-10,-10) (1%2,1%2)))
     , (( myModMask,               xK_s     ), withFocused (keysResizeWindow (10,10) (1%2,1%2)))
     , (( myModMask .|. shiftMask, xK_d     ), withFocused (keysAbsResizeWindow (-10,-10) (1024,752)))
@@ -73,7 +179,13 @@ myConfig = defaultConfig
     , (( myModMask,               xK_Left     ), withFocused (keysMoveWindow (-10,0) ))
     , (( myModMask,               xK_Up     ), withFocused (keysMoveWindow (0,-10) ))
     ]
---myKeys = [ ((mod4Mask, xK_m), spawn "mutt") ]
+    ++
+    -- mod-[1..9] %! Switch to workspace N
+    -- mod-shift-[1..9] %! Move client to workspace N
+    [((m .|. myModMask, k), windows $ f i)
+        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+
 myBorderWidth   = 1
 --myFocusedBorderColor    = "#dc322f"
 --myFocusedBorderColor    = "#005f00"
@@ -113,7 +225,7 @@ myFadeHook = composeAll [opacity 0.98
                         ]
 
 myLogHook = fadeWindowsLogHook myFadeHook
-myLayout = nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR
+myLayout = nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR ||| simpleFloat
 --myLayout = mkToggle (single REFLECTX) $
 --           mkToggle (single REFLECTY) $
 --               (tiled ||| tiledR ||| Mirror tiled ||| Full)

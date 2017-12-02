@@ -41,7 +41,6 @@ myBar = "xmobar"
 myPP = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "<" ">" }
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
-
 myConfig = defaultConfig 
     { terminal           = myTerminal
     , modMask            = myModMask
@@ -51,33 +50,26 @@ myConfig = defaultConfig
     , workspaces         = myWorkspaces
     , keys              = myKeys
     , layoutHook        = myLayout
-    , manageHook        = myManageHook <+> manageDocks
+    , manageHook        = myManageHook <+> manageHook defaultConfig <+> doFloat
     , handleEventHook   = myEventHook
     , startupHook       = myStartupHook
     , logHook           = myLogHook
-    --, logHook           = fadeWindowsLogHook myFadeHook
-    --, handleEventHook = fadeWindowsEventHook
-    {- ... -}
-}
+    }
 
---`additionalKeys` [ (( myModMask, xK_f), safeSpawn "firefox" [])
---   , (( myModMask, xK_p), spawn "dmenu_run")
---   , (( myModMask, xK_q), spawn "qt.sh")
---   , (( myModMask, xK_r), spawn "urxvt -e ranger")
---   , (( myModMask, xK_n), spawn "urxvt -e newsbeuter")
---   , (( myModMask, xK_y), spawn "urxvt -e mpsyt")
---   , (( myModMask, xK_m), spawn "urxvt -e mutt")
---   , (( myModMask,               xK_d     ), withFocused (keysResizeWindow (-10,-10) (1%2,1%2)))
---   , (( myModMask,               xK_s     ), withFocused (keysResizeWindow (10,10) (1%2,1%2)))
---   , (( myModMask .|. shiftMask, xK_d     ), withFocused (keysAbsResizeWindow (-10,-10) (1024,752)))
---   , (( myModMask .|. shiftMask, xK_s     ), withFocused (keysAbsResizeWindow (10,10) (1024,752)))
---   , (( myModMask,               xK_a     ), withFocused (keysMoveWindowTo (800,384) (1%2,1%2)))
---   , (( myModMask,               xK_Right     ), withFocused (keysMoveWindow (10,0) ))
---   , (( myModMask,               xK_Down     ), withFocused (keysMoveWindow (0,10) ))
---   , (( myModMask,               xK_Left     ), withFocused (keysMoveWindow (-10,0) ))
---   , (( myModMask,               xK_Up     ), withFocused (keysMoveWindow (0,-10) ))
---   ]
---
+myTerminal      = "urxvt"
+
+myModMask       = mod4Mask
+
+myBorderWidth   = 1
+
+myNormalBorderColor     = "#000000"
+
+myFocusedBorderColor    = "#FFFFFF" --"#dc322f" "#005f00" "#ff0000" "#222200"
+
+myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+-- myWorkspaces = [ "Web", "Evernote", "Drafting", "Shell", "Mail", "Music", "IRC", "News", "Transmission", "Misc."]
+-- myWorkspaces = [ "Web", "Drafting", "Shell1", "Shell2", "Mail", "Music", "IRC", "News", "Misc."]
+
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	 -- github boylemic/configs
      -- launch a terminal
@@ -192,45 +184,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
-myBorderWidth   = 1
---myFocusedBorderColor    = "#dc322f"
---myFocusedBorderColor    = "#005f00"
--- myFocusedBorderColor    = "#ff0000"
-myFocusedBorderColor    = "#FFFFFF"
--- myFocusedBorderColor    = "#222200"
-myNormalBorderColor     = "#000000"
-myModMask       = mod4Mask
-myTerminal      = "urxvt"
---myTerminal      = "konsole"
--- myWorkspaces = [ "Web", "Evernote", "Drafting", "Shell", "Mail", "Music", "IRC", "News", "Transmission", "Misc."]
--- myWorkspaces = [ "Web", "Drafting", "Shell1", "Shell2", "Mail", "Music", "IRC", "News", "Misc."]
-myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-
-myManageHook = composeAll
-     [ isFullscreen        --> doFullFloat
-     , className =? "Alsamixer" --> doFloat
-     , className =? "mpv" --> doFloat
-     , className =? "feh" --> doFloat
-     --, appName =? "ranger" --> doF W.swapDown
-     , appName =? "ranger" --> doFloat
-     , appName =? "qt.sh" --> doShift "1"
-     --, insertPosition Below Newer
-     , transience'
-     ]
-
-    <+> manageDocks <+> manageHook defaultConfig
-
-myEventHook = fadeWindowsEventHook {- ... -}
-
---myFadeHook = composeAll [isUnfocused --> opacity 0.60
---                        ,                opacity 0.75
---                        ]
-
-myFadeHook = composeAll [opacity 0.98
-                        , isUnfocused --> opacity 0.95
-                        ]
-
-myLogHook = fadeWindowsLogHook myFadeHook
 myLayout = nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR ||| simpleFloat
 --myLayout = mkToggle (single REFLECTX) $
 --           mkToggle (single REFLECTY) $
@@ -251,19 +204,22 @@ myLayout = nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR ||| simpleFloat
                        -- Percent of screen to increment by when resizing panes  
                        delta = 3/100
 
--- Define layout for specific workspaces
 nobordersLayout = smartBorders $ Full
 
---myKeys = [ ((myModMask .|. controlMask, xK_x), sendMessage $ Toggle REFLECTX)
---         , ((myModMask .|. controlMask, xK_y), sendMessage $ Toggle REFLECTY)
---         ]
---      mkToggle (single REFLECTX) $
---      mkToggle (single REFLECTY) $
---        (tiled ||| tiledR ||| Mirror tiled ||| Full  )
---
---      , ((modm .|. controlMask, xK_x), sendMessage $ Toggle REFLECTX)
---      , ((modm .|. controlMask, xK_y), sendMessage $ Toggle REFLECTY)
+myManageHook = composeAll
+     [ isFullscreen        --> doFullFloat
+     , className =? "Alsamixer" --> doFloat
+     , className =? "mpv" --> doFloat
+     , className =? "feh" --> doFloat
+     --, appName =? "ranger" --> doF W.swapDown
+     , appName =? "ranger" <&&> className =? "urxvt" --> doFloat
+     , appName =? "qt.sh" --> doShift "1"
+     , manageDocks
+     --, insertPosition Below Newer
+     --, transience'
+     ]
 
+myEventHook = fadeWindowsEventHook {- ... -}
 
 --myStartupHook = ewmhDesktopsStartup
 --myStartupHook :: X ()
@@ -276,12 +232,8 @@ myStartupHook = do
     --spawnOn "Mail" "mutt"
     --spawnOn "Music" "vimpc"
 
--- toggle the status bar gap
---[
---((modMask,      xK_f    ), sendMessage ToggleStruts)
---((modMask,        xK_semicolon), windows W.shiftMaster)
---]
+myLogHook = fadeWindowsLogHook myFadeHook
 
--- myLogHook = fadeInactiveLogHook fadeAmount
---     where fadeAmount = 0.30
--- 
+myFadeHook = composeAll [opacity 0.98
+                        , isUnfocused --> opacity 0.95
+                        ]

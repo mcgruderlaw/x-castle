@@ -43,7 +43,6 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
 
 myConfig = defaultConfig 
---myConfig = kdeConfig
     { terminal           = myTerminal
     , modMask            = myModMask
     , borderWidth        = myBorderWidth
@@ -52,7 +51,7 @@ myConfig = defaultConfig
     , workspaces         = myWorkspaces
     , keys              = myKeys
     , layoutHook        = myLayout
-    , manageHook        = myManageHook
+    , manageHook        = myManageHook <+> manageDocks
     , handleEventHook   = myEventHook
     , startupHook       = myStartupHook
     , logHook           = myLogHook
@@ -99,9 +98,16 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
  
     --  Reset the layouts on the current workspace to default
     , ((myModMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
- 
+
+    -- workspaces from connermcd
+    , ((modMask,               xK_s     ), toggleWS)
+    , ((modMask .|. shiftMask,               xK_s     ), prevWS)
+    , ((modMask,               xK_n     ), nextWS)
+    , ((modMask .|. shiftMask, xK_p     ), shiftToPrev >> prevWS)
+    , ((modMask .|. shiftMask, xK_n     ), shiftToNext >> nextWS)
+
     -- Resize viewed windows to the correct size
-    , ((myModMask,               xK_n     ), refresh)
+    , ((myModMask,               xK_r     ), refresh)
  
     -- Move focus to the next window
     , ((myModMask,               xK_Tab   ), windows W.focusDown)
@@ -170,9 +176,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , (( myModMask .|. shiftMask, xK_y), spawn "urxvt -e mpsyt")
     , (( myModMask .|. shiftMask, xK_m), spawn "urxvt -e mutt")
     , (( myModMask,               xK_d     ), withFocused (keysResizeWindow (-10,-10) (1%2,1%2)))
-    , (( myModMask,               xK_s     ), withFocused (keysResizeWindow (10,10) (1%2,1%2)))
-    , (( myModMask .|. shiftMask, xK_d     ), withFocused (keysAbsResizeWindow (-10,-10) (1024,752)))
-    , (( myModMask .|. shiftMask, xK_s     ), withFocused (keysAbsResizeWindow (10,10) (1024,752)))
+    , (( myModMask,               xK_semicolon     ), withFocused (keysResizeWindow (10,10) (1%2,1%2)))
+    , (( myModMask .|. shiftMask, xK_d     ), withFocused (keysAbsResizeWindow (-10,-10) (0,0)))
+    , (( myModMask .|. shiftMask, xK_semicolon     ), withFocused (keysAbsResizeWindow (10,10) (0,0)))
     , (( myModMask,               xK_a     ), withFocused (keysMoveWindowTo (800,384) (1%2,1%2)))
     , (( myModMask,               xK_Right     ), withFocused (keysMoveWindow (10,0) ))
     , (( myModMask,               xK_Down     ), withFocused (keysMoveWindow (0,10) ))

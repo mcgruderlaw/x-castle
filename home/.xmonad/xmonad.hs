@@ -27,6 +27,7 @@ import XMonad.Layout.SimpleFloat
 import XMonad.Layout.Spacing
 import XMonad.Layout.Tabbed 
 import XMonad.Layout.ToggleLayouts
+import XMonad.ManageHook
 import XMonad.Prompt
 import XMonad.Prompt.Shell
 import XMonad.Prompt.XMonad
@@ -50,7 +51,7 @@ myConfig = defaultConfig
     , workspaces         = myWorkspaces
     , keys              = myKeys
     , layoutHook        = myLayout
-    , manageHook        = myManageHook <+> manageHook defaultConfig <+> doFloat
+    , manageHook        = myManageHook
     , handleEventHook   = myEventHook
     , startupHook       = myStartupHook
     , logHook           = myLogHook
@@ -67,12 +68,12 @@ myNormalBorderColor     = "#000000"
 myFocusedBorderColor    = "#FFFFFF" --"#dc322f" "#005f00" "#ff0000" "#222200"
 
 myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
--- myWorkspaces = [ "Web", "Evernote", "Drafting", "Shell", "Mail", "Music", "IRC", "News", "Transmission", "Misc."]
--- myWorkspaces = [ "Web", "Drafting", "Shell1", "Shell2", "Mail", "Music", "IRC", "News", "Misc."]
+    -- myWorkspaces = [ "Web", "Evernote", "Drafting", "Shell", "Mail", "Music", "IRC", "News", "Transmission", "Misc."]
+    -- myWorkspaces = [ "Web", "Drafting", "Shell1", "Shell2", "Mail", "Music", "IRC", "News", "Misc."]
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
-	 -- github boylemic/configs
-     -- launch a terminal
+    -- github boylemic/configs
+    -- launch a terminal
     [ ((myModMask,              xK_Return), spawn "urxvt")
  
     -- launch dmenu
@@ -185,9 +186,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
 myLayout = nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR ||| simpleFloat
---myLayout = mkToggle (single REFLECTX) $
---           mkToggle (single REFLECTY) $
---               (tiled ||| tiledR ||| Mirror tiled ||| Full)
+    --myLayout = mkToggle (single REFLECTX) $
+    --           mkToggle (single REFLECTY) $
+    --               (tiled ||| tiledR ||| Mirror tiled ||| Full)
                   where  
                        -- default tiling algorithm partitions the screen into two panes  
                        tiled = spacing 3 $ Tall nmaster delta ratio  
@@ -207,27 +208,28 @@ myLayout = nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR ||| simpleFloat
 nobordersLayout = smartBorders $ Full
 
 myManageHook = composeAll
-     [ isFullscreen        --> doFullFloat
-     , className =? "Alsamixer" --> doFloat
+     --[ isFullscreen        --> (doF W.focusDown <+> doFullFloat)
+     [ className =? "Alsamixer" --> doFloat
      , className =? "mpv" --> doFloat
      , className =? "feh" --> doFloat
      --, appName =? "ranger" --> doF W.swapDown
-     , appName =? "ranger" <&&> className =? "urxvt" --> doFloat
+     , appName =? "ranger" <&&> className =? "urxvt" --> doCenterFloat
+     , appName =? "Ranger" --> doCenterFloat
      , appName =? "qt.sh" --> doShift "1"
      , manageDocks
      --, insertPosition Below Newer
      --, transience'
-     ]
+     ] <+> doCenterFloat <+> manageHook defaultConfig <+> manageDocks
 
 myEventHook = fadeWindowsEventHook {- ... -}
 
---myStartupHook = ewmhDesktopsStartup
---myStartupHook :: X ()
 myStartupHook = do
+    --myStartupHook = ewmhDesktopsStartup
+    --myStartupHook :: X ()
     ewmhDesktopsStartup
---    spawnOn "1" "qt.sh"
---    spawnOn "2" "urxvt"
---    spawnOn "5" "mpv"
+    spawnOn "1" "qt.sh"
+    spawnOn "2" "urxvt"
+    --spawnOn "5" "mpv"
     --spawnOn "Shell1" "xterm"
     --spawnOn "Mail" "mutt"
     --spawnOn "Music" "vimpc"

@@ -163,6 +163,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , (( myModMask, xK_f), safeSpawn "firefox" [])
     --, (( myModMask, xK_p), spawn "dmenu_run")
     , (( myModMask, xK_w), spawn "qt.sh")
+    , (( myModMask .|. shiftMask, xK_l ), spawn "urxvt -e lawflash.sh")
     , (( myModMask .|. shiftMask, xK_w ), spawn "urxvt -e w3m")
     , (( myModMask .|. shiftMask, xK_r), spawn "urxvt -e ranger")
     , (( myModMask .|. shiftMask, xK_n ), spawn "urxvt -e newsbeuter")

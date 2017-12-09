@@ -1,4 +1,4 @@
-Config { font = "xft:Monofur:size=10,xft:Monospace"
+Config { font = "xft:Monofur:size=12,xft:Monospace"
     , bgColor = "#000000" --"#000000" --Solarized "#002b36"
     , fgColor = "#a8a8a8"
     , position = Bottom
@@ -9,7 +9,7 @@ Config { font = "xft:Monofur:size=10,xft:Monospace"
     , alignSep = "}{"
     --    , template = "%StdinReader% }{ %mpd% | %mail% %battery% %multicpu% %memory% %disku% | %wlan0%%eth0% | %date% "
     --    , template = "%StdinReader% }{ %mpd% | %battery% %multicpu% %memory% %disku% | %enp4s0% | %date% "
-    , template = "%StdinReader% }{ %battery% %multicpu% %memory% %disku% | %enp2s0% | %wlp3s0% | %date% "
+    , template = "%StdinReader% }{ %battery% %multicpu% %memory% %disku% | %print_WAN% %wan% | %print_LAN% %lan% | %uptime% | %enp2s0% | %wlp3s0% | %date% "
     , commands = [ Run Network "enp2s0" ["-t", "<fc=#556B2F><rx> ↓</fc> <fc=#B22222><tx> ↑</fc>","-S","True"] 10
                  , Run Network "wlp3s0" ["-t", "<fc=#556B2F><rx> ↓</fc> <fc=#B22222><tx> ↑</fc>","-S","True"] 10
                  , Run MultiCpu ["-t", "C: <total>%", "-H","50","--high","#B22222"] 10
@@ -19,7 +19,18 @@ Config { font = "xft:Monofur:size=10,xft:Monospace"
                  , Run Date "<fc=#ffffff>%a %m/%d %I:%M %P</fc>" "date" 10
                  --, Run MPD ["-t", "<artist> - <fc=#ffffff><title></fc> (<album>) <statei>", "--", "-P", ">>", "-Z", "=", "-S", "><"] 10
                  , Run Mail [("E: ", "~/.mail/INBOX")] "mail"
-                 , Run BatteryP ["BAT1"] ["-t", "B: <left>%", "-L", "10", "-H", "80", "-p", "3", "--", "-O", "<fc=green>On</fc> - ", "-o", "", "-L", "-15", "-H", "-5", "-l", "red", "-m", "blue", "-h", "green"] 600
+                 , Run BatteryP ["BAT1"]
+                                ["-t", "<acstatus><watts> <timeleft> <left>%",
+                                 "-L", "10", "-H", "80", "-p", "3",
+                                 "--", "-O", "<fc=green>On</fc> - ", "-o", "",
+                                 "-L", "-15", "-H", "-5",
+                                 "-l", "red", "-m", "blue", "-h", "green"]
+                                100
+                 , Run Com "curl" ["icanhazip.com"] "wan" 100
+                 , Run Com "echo" ["WAN:"] "print_WAN" 0
+                 , Run Com "lan.sh" [] "lan" 100
+                 , Run Com "echo" ["LAN:"] "print_LAN" 0
+                 , Run Uptime ["-t", "<days>, <hours>, <minutes>", "-S", "True"] 10
                  , Run StdinReader
                  ]
 }

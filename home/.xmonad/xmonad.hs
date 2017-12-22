@@ -217,7 +217,8 @@ myManageHook = composeAll
      --, appName =? "ranger" --> doF W.swapDown
      , appName =? "ranger" <&&> className =? "urxvt" --> doCenterFloat
      , appName =? "Ranger" --> doCenterFloat
-     , appName =? "qt.sh" --> doShift "1"
+     , className =? "newsbeuter" --> doFloat
+     , className =? "qutebrowser" --> doShift "1"
      , manageDocks
      --, insertPosition Below Newer
      --, transience'
@@ -228,8 +229,8 @@ myEventHook = fadeWindowsEventHook {- ... -}
 myStartupHook = do
     --myStartupHook = ewmhDesktopsStartup
     --myStartupHook :: X ()
-    ewmhDesktopsStartup
-    spawnOn "1" "qt.sh"
+    --ewmhDesktopsStartup
+    --spawnOn "1" "qt.sh"
     spawnOn "2" "urxvt"
     --spawnOn "5" "mpv"
     --spawnOn "Shell1" "xterm"

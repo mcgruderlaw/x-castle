@@ -43,7 +43,7 @@ myBar = "xmobar"
 myPP = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "<" ">" }
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
-myConfig = defaultConfig
+myConfig = def
     { terminal           = myTerminal
     , modMask            = myModMask
     , borderWidth        = myBorderWidth
@@ -221,7 +221,7 @@ myManageHook = composeAll
      , manageDocks
      --, insertPosition Below Newer
      --, transience'
-     ] <+> doCenterFloat <+> manageHook defaultConfig <+> manageDocks
+     ] <+> doCenterFloat <+> manageHook def <+> manageDocks
 
 myEventHook = fadeWindowsEventHook {- ... -}
 

@@ -1,4 +1,4 @@
-Config { font = "xft:Monofur:size=12,xft:Monospace"
+Config { font = "xft:Monofur:size=8,xft:Monospace"
     , bgColor = "#000000" --"#000000" --Solarized "#002b36"
     , fgColor = "#a8a8a8"
     , position = Bottom

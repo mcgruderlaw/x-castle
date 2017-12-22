@@ -216,6 +216,7 @@ myManageHook = composeAll
      --, appName =? "ranger" --> doF W.swapDown
      , appName =? "ranger" <&&> className =? "urxvt" --> doCenterFloat
      , appName =? "Ranger" --> doCenterFloat
+     , className =? "newsbeuter" --> doFloat
      , className =? "qutebrowser" --> doShift "1"
      , manageDocks
      --, insertPosition Below Newer

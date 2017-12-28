@@ -27,9 +27,9 @@ Config { font = "xft:Monofur:size=10,xft:Monospace"
                                  "-L", "-15", "-H", "-5",
                                  "-l", "red", "-m", "blue", "-h", "green"]
                                 100
-                 , Run Com "curl" ["icanhazip.com"] "wan" 100
+                 , Run Com "curl" ["icanhazip.com"] "wan" 10
                  , Run Com "echo" ["WAN:"] "print_WAN" 0
-                 , Run Com "lan.sh" [] "lan" 100
+                 , Run Com "lan.sh" [] "lan" 10
                  , Run Com "echo" ["LAN:"] "print_LAN" 0
                  , Run Uptime ["-t", "<days>, <hours>, <minutes>", "-S", "True"] 10
                  , Run StdinReader

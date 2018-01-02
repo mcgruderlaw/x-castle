@@ -52,9 +52,11 @@ myConfig = def
     , workspaces         = myWorkspaces
     , keys              = myKeys
     , layoutHook        = myLayout
+    --, manageHook        = myManageHook <+> doCenterFloat <+> manageHook def <+> manageDocks
+    --, manageHook        = doCenterFloat <+> myManageHook
     , manageHook        = myManageHook
     , handleEventHook   = myEventHook
-    , startupHook       = myStartupHook
+    --, startupHook       = myStartupHook
     , logHook           = myLogHook
     }
 
@@ -210,28 +212,19 @@ myLayout = nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR ||| simpleFloat
 nobordersLayout = smartBorders $ Full
 
 myManageHook = composeAll
-     --[ isFullscreen        --> (doF W.focusDown <+> doFullFloat)
-     [ className =? "Alsamixer" --> doFloat
-     , className =? "mpv" --> doFloat
-     , className =? "feh" --> doFloat
-     --, appName =? "ranger" --> doF W.swapDown
-     , appName =? "ranger" <&&> className =? "urxvt" --> doCenterFloat
-     , appName =? "Ranger" --> doCenterFloat
-     , className =? "newsbeuter" --> doFloat
-     , className =? "qutebrowser" --> doShift "1"
-     , manageDocks
-     --, insertPosition Below Newer
-     --, transience'
-     ] <+> doCenterFloat <+> manageHook def <+> manageDocks
+     [ className =? "qutebrowser" --> doShift "1"
+     , className =? "mpv" --> doFloat 
+     , className =? "feh" --> doFloat 
+     ]
 
 myEventHook = fadeWindowsEventHook {- ... -}
 
-myStartupHook = do
+--myStartupHook = do
     --myStartupHook = ewmhDesktopsStartup
     --myStartupHook :: X ()
     --ewmhDesktopsStartup
     --spawnOn "1" "qt.sh"
-    spawnOn "2" "urxvt"
+    --spawnOn "2" "urxvt"
     --spawnOn "5" "mpv"
     --spawnOn "Shell1" "xterm"
     --spawnOn "Mail" "mutt"

@@ -2,7 +2,7 @@ Xcursor.theme: Bluecurve
 
 URxvt*depth : 32
 URxvt*buffered: true
-URxvt*font: xft:Monofur:size=10:antialias=true,xft:Liberation-fonts:antialias=false,xft:NotoColorEmoji:antialias=false,xft:Libertine:antialias=false:-*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
+URxvt*font: xft:Monofur:bold:size=14:antialias=true,xft:Liberation-fonts:antialias=false,xft:NotoColorEmoji:antialias=false,xft:Libertine:antialias=false:-*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
 URxvt*termName: rxvt-unicode-256color
 URxvt*scrollBar: false
 URxvt*lineSpace: 15

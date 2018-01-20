@@ -2,14 +2,18 @@ Xcursor.theme: Bluecurve
 
 URxvt*depth : 32
 URxvt*buffered: true
+<<<<<<< HEAD
 URxvt*font: xft:Monofur:size=14:antialias=true,xft:Liberation-fonts:antialias=false,xft:NotoColorEmoji:antialias=false,xft:Libertine:antialias=false:-*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
+=======
+URxvt*font: xft:Monofur:bold:size=14:antialias=true,xft:Liberation-fonts:antialias=false,xft:NotoColorEmoji:antialias=false,xft:Libertine:antialias=false:-*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
+>>>>>>> c57e9b0f62472c23ac31812a16fa8c88c72df6a1
 URxvt*termName: rxvt-unicode-256color
 URxvt*scrollBar: false
 URxvt*lineSpace: 15
 URxvt*iso14755: false
 URxvt*iso14755_52: false
 
-URxvt.perl-ext-common: default,url-select,selection-to-clipboard,pasta,matcher,keyboard-select,font-size
+URxvt.perl-ext-common: default,url-select,selection-to-clipboard,pasta,matcher,keyboard-select,font-size,fullscreen
 URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-u: perl:url-select:select_next
@@ -24,6 +28,7 @@ URxvt.matcher.button: 1
 URxvt.keysym.Control-Escape: perl:keyboard-select:activate
 URxvt.keysym.Control-Shift-V: perl:keyboard-select:search
 URxvt.clipboard.autocopy: true
+Urxvt.keysym.F11:    perl:fullscreen:switch
 
 #define S_base03        #002b36
 #define S_base02        #073642

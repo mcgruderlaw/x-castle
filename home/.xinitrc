@@ -41,5 +41,5 @@ sh ~/.bin/.fehbg &
 # exec awesome
 exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
 # ...or the Window Manager of your choice
-
+# exec urxvt
 

@@ -42,4 +42,5 @@ sh ~/.bin/.fehbg &
 exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
 # ...or the Window Manager of your choice
 # exec urxvt -g 174x31
+# exec urxvt -g 136x26
 

@@ -112,12 +112,14 @@ URxvt*color15:               S_base3
     xterm*faceSize4: 16
     ! VT font menu: Huge
     xterm*faceSize5: 22
+	! My added "Huger" font
+    xterm*faceSize6: 25
     
     
     ! Ensure that your locale is set up for UTF-8. If you do not use UTF-8, you may need to force xterm to more strictly follow your locale by setting
     XTerm.vt100.locale: true
-    XTerm*vt100.geometry: 80x32
-	XTerm.vt100.activeIcon: true
+    ! XTerm*vt100.geometry: 80x50
+	! XTerm.vt100.activeIcon: true
     
     ! Cursor ====================================================
     ! pointer and cursor (blinking and color)

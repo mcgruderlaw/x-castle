@@ -39,6 +39,9 @@ sh ~/.bin/.fehbg &
 # exec ck-launch-session dbus-launch --sh-syntax --exit-with-session startkde
 # exec startxfce4
 # exec awesome
+exec xterm -e ranger &
+exec xterm &
+# exec xterm -g 80x50 &
 exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
 # ...or the Window Manager of your choice
 # exec urxvt -g 174x31

@@ -25,6 +25,7 @@ import XMonad.Layout.Renamed
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.SimpleFloat
 import XMonad.Layout.Spacing
+import XMonad.Layout.StackTile
 import XMonad.Layout.Tabbed 
 import XMonad.Layout.ToggleLayouts
 import XMonad.ManageHook
@@ -60,11 +61,11 @@ myConfig = def
     , logHook           = myLogHook
     }
 
-myTerminal      = "urxvt"
+myTerminal      = "xterm"
 
 myModMask       = mod4Mask
 
-myBorderWidth   = 1
+myBorderWidth   = 4
 
 myNormalBorderColor     = "#000000"
 
@@ -77,7 +78,7 @@ myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- github boylemic/configs
     -- launch a terminal
-    [ ((myModMask,              xK_Return), spawn "urxvt")
+    [ ((myModMask,              xK_Return), spawn "xterm")
  
     -- launch dmenu
     --, ((myModMask,               xK_d     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
@@ -166,12 +167,12 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , (( myModMask, xK_f), safeSpawn "firefox" [])
     --, (( myModMask, xK_p), spawn "dmenu_run")
     , (( myModMask, xK_w), spawn "qt.sh")
-    , (( myModMask .|. shiftMask, xK_l ), spawn "urxvt -e lawflash.sh")
-    , (( myModMask .|. shiftMask, xK_w ), spawn "urxvt -e w3m")
-    , (( myModMask .|. shiftMask, xK_r), spawn "urxvt -e ranger")
-    , (( myModMask .|. shiftMask, xK_n ), spawn "urxvt -e newsbeuter")
-    , (( myModMask .|. shiftMask, xK_y), spawn "urxvt -e mpsyt")
-    , (( myModMask .|. shiftMask, xK_m), spawn "urxvt -e mutt")
+    , (( myModMask .|. shiftMask, xK_l ), spawn "xterm -e lawflash.sh")
+    , (( myModMask .|. shiftMask, xK_w ), spawn "xterm -e w3m")
+    , (( myModMask .|. shiftMask, xK_r), spawn "xterm -e ranger")
+    , (( myModMask .|. shiftMask, xK_n ), spawn "xterm -e newsbeuter")
+    , (( myModMask .|. shiftMask, xK_y), spawn "xterm -e mpsyt")
+    , (( myModMask .|. shiftMask, xK_m), spawn "xterm -e mutt")
     , (( myModMask,               xK_d     ), withFocused (keysResizeWindow (-10,-10) (1%2,1%2)))
     , (( myModMask,               xK_semicolon     ), withFocused (keysResizeWindow (10,10) (1%2,1%2)))
     , (( myModMask .|. shiftMask, xK_d     ), withFocused (keysAbsResizeWindow (-10,-10) (0,0)))
@@ -189,25 +190,25 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
-myLayout = nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR ||| simpleFloat
+myLayout = spacing 15 $ nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR ||| StackTile 1 (3/100) (2/3) ||| simpleFloat
     --myLayout = mkToggle (single REFLECTX) $
     --           mkToggle (single REFLECTY) $
     --               (tiled ||| tiledR ||| Mirror tiled ||| Full)
                   where  
                        -- default tiling algorithm partitions the screen into two panes  
-                       tiled = spacing 3 $ Tall nmaster delta ratio  
+                       tiled = Tall nmaster delta ratio  
                     
                        -- reflected default tiling algorithm partitions the screen into two panes  
-                       tiledR = spacing 3 $ reflectHoriz $ Tall nmaster delta ratio  
-                    
+                       tiledR = reflectHoriz $ Tall nmaster delta ratio  
+					
                        -- The default number of windows in the master pane  
                        nmaster = 1  
                     
                        -- Default proportion of screen occupied by master pane  
-                       ratio = 1/2  
+                       ratio = (2/3)
                     
                        -- Percent of screen to increment by when resizing panes  
-                       delta = 3/100
+                       delta = (3/100)
 
 nobordersLayout = smartBorders $ Full
 
@@ -232,6 +233,6 @@ myEventHook = fadeWindowsEventHook {- ... -}
 
 myLogHook = fadeWindowsLogHook myFadeHook
 
-myFadeHook = composeAll [opacity 0.98
-                        , isUnfocused --> opacity 0.95
+myFadeHook = composeAll [opacity 0.85
+                        , isUnfocused --> opacity 0.70
                         ]

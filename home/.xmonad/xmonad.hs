@@ -32,7 +32,7 @@ import XMonad.ManageHook
 import XMonad.Prompt
 import XMonad.Prompt.Shell
 import XMonad.Prompt.XMonad
-import XMonad.Util.EZConfig
+import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Util.Run
 import XMonad.Util.Run (safeSpawn)
 import qualified Data.Map as M
@@ -190,7 +190,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
-myLayout = spacing 15 $ nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR ||| StackTile 1 (3/100) (2/3) ||| simpleFloat
+myLayout = spacing 1 $ nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR ||| StackTile 1 (3/100) (2/3) ||| simpleFloat
     --myLayout = mkToggle (single REFLECTX) $
     --           mkToggle (single REFLECTY) $
     --               (tiled ||| tiledR ||| Mirror tiled ||| Full)
@@ -233,6 +233,6 @@ myEventHook = fadeWindowsEventHook {- ... -}
 
 myLogHook = fadeWindowsLogHook myFadeHook
 
-myFadeHook = composeAll [opacity 0.85
-                        , isUnfocused --> opacity 0.70
+myFadeHook = composeAll [opacity 0.93
+                        , isUnfocused --> opacity 0.85
                         ]

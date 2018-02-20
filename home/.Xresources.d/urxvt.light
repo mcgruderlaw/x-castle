@@ -103,11 +103,11 @@ XTerm*faceName: DejaVu Sans Mono
 XTerm*faceSize: 16
 
 ! VT Font Menu: Unreadable
-xterm*faceSize1: 8
+xterm*faceSize1: 10
 ! VT font menu: Tiny
-xterm*faceSize2: 10
+xterm*faceSize2: 12
 ! VT font menu: Medium
-xterm*faceSize3: 12
+xterm*faceSize3: 14
 ! VT font menu: Large
 xterm*faceSize4: 16
 ! VT font menu: Huge
@@ -258,20 +258,13 @@ XTerm*on3Clicks: regex ([[:alpha:]]+://)?([[:alnum:]!#+,./=?@_~-]|(%[[:xdigit:]]
 
 !!Source http://github.com/altercation/solarized
 
-!!*background: #002b36
-!!*foreground: #657b83
-!!!!*fading: 40
-!!*fadeColor: #002b36
-!!*cursorColor: #93a1a1
-!!*pointerColorBackground: #586e75
-!!*pointerColorForeground: #93a1a1
-
-*background:            S_base3
-*foreground:            S_base00
-*fadeColor:             S_base3
-*cursorColor:           S_base01
-*pointerColorBackground:S_base1
-*pointerColorForeground:S_base01
+*background: #002b36
+*foreground: #657b83
+!!*fading: 40
+*fadeColor: #002b36
+*cursorColor: #93a1a1
+*pointerColorBackground: #586e75
+*pointerColorForeground: #93a1a1
 
 !! black dark/light
 *color0: #073642
@@ -304,6 +297,7 @@ XTerm*on3Clicks: regex ([[:alpha:]]+://)?([[:alnum:]!#+,./=?@_~-]|(%[[:xdigit:]]
 !! white dark/light
 *color7: #eee8d5
 *color15: #fdf6e3
+
 
 
 
@@ -340,16 +334,17 @@ set colorscheme solarized
 
 ### contact
 
-			 _   _     _      _         
-  __ _  ___ | |_| |__ | | ___| |_ _   _ 
- / _` |/ _ \| __| '_ \| |/ _ \ __| | | |
-| (_| | (_) | |_| |_) | |  __/ |_| |_| |
- \__, |\___/ \__|_.__/|_|\___|\__|\__,_|
- |___/                                  
+                 _   _     _      _         
+      __ _  ___ | |_| |__ | | ___| |_ _   _ 
+     / _` |/ _ \| __| '_ \| |/ _ \ __| | | |
+    | (_| | (_) | |_| |_) | |  __/ |_| |_| |
+     \__, |\___/ \__|_.__/|_|\___|\__|\__,_|
+     |___/                                  
 
 - http://www.youtube.com/user/gotbletu
 - https://twitter.com/gotbletu
 - https://plus.google.com/+gotbletu
 - https://github.com/gotbletu
 - gotbletu@gmail.com
+
 

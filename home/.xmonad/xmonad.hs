@@ -167,6 +167,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , (( myModMask, xK_f), safeSpawn "firefox" [])
     --, (( myModMask, xK_p), spawn "dmenu_run")
     , (( myModMask, xK_w), spawn "qt.sh")
+    , (( myModMask, xK_e), spawn "emacs")
     , (( myModMask .|. shiftMask, xK_l ), spawn "xterm -e lawflash.sh")
     , (( myModMask .|. shiftMask, xK_w ), spawn "xterm -e w3m")
     , (( myModMask .|. shiftMask, xK_r), spawn "xterm -e ranger")
@@ -205,7 +206,7 @@ myLayout = spacing 1 $ nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR |||
                        nmaster = 1  
                     
                        -- Default proportion of screen occupied by master pane  
-                       ratio = (2/3)
+                       ratio = (1/2)
                     
                        -- Percent of screen to increment by when resizing panes  
                        delta = (3/100)

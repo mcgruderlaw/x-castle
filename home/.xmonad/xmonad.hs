@@ -57,7 +57,7 @@ myConfig = def
     --, manageHook        = doCenterFloat <+> myManageHook
     , manageHook        = myManageHook
     , handleEventHook   = myEventHook
-    --, startupHook       = myStartupHook
+    , startupHook       = myStartupHook
     , logHook           = myLogHook
     }
 
@@ -104,7 +104,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_n     ), shiftToNext >> nextWS)
 
     -- Resize viewed windows to the correct size
-    , ((myModMask,               xK_r     ), refresh)
+    , ((myModMask,               xK_r   ), refresh)
  
     -- Move focus to the next window
     , ((myModMask,               xK_Tab   ), windows W.focusDown)
@@ -167,7 +167,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , (( myModMask, xK_f), safeSpawn "firefox" [])
     --, (( myModMask, xK_p), spawn "dmenu_run")
     , (( myModMask, xK_w), spawn "qt.sh")
-    , (( myModMask, xK_e), spawn "emacs")
+    , (( myModMask, xK_e), spawn "emacs-26-vcs")
     , (( myModMask .|. shiftMask, xK_l ), spawn "xterm -e lawflash.sh")
     , (( myModMask .|. shiftMask, xK_w ), spawn "xterm -e w3m")
     , (( myModMask .|. shiftMask, xK_r), spawn "xterm -e ranger")
@@ -221,11 +221,12 @@ myManageHook = composeAll
 
 myEventHook = fadeWindowsEventHook {- ... -}
 
---myStartupHook = do
+myStartupHook = do
     --myStartupHook = ewmhDesktopsStartup
     --myStartupHook :: X ()
     --ewmhDesktopsStartup
     --spawnOn "1" "qt.sh"
+    spawnOn "1" "emacs"
     --spawnOn "2" "urxvt"
     --spawnOn "5" "mpv"
     --spawnOn "Shell1" "xterm"

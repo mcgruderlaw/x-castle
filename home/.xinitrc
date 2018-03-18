@@ -39,7 +39,7 @@ sh ~/.bin/.fehbg &
 # exec ck-launch-session dbus-launch --sh-syntax --exit-with-session startkde
 # exec startxfce4
 # exec awesome
-exec xterm -e emacs &
+# exec xterm -e emacs &
 ##exec xterm -e ranger &
 ##exec xterm &
 # exec xterm -g 80x50 &

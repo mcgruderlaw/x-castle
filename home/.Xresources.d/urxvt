@@ -100,7 +100,7 @@ XTerm.termName: xterm-256color
 ! Fonts ====================================================
 ! set font and fontsize
 XTerm*faceName: DejaVu Sans Mono
-XTerm*faceSize: 16
+XTerm*faceSize: 12
 
 ! VT Font Menu: Unreadable
 xterm*faceSize1: 10
@@ -347,4 +347,4 @@ set colorscheme solarized
 - https://github.com/gotbletu
 - gotbletu@gmail.com
 
-Emacs.font: DejaVu Sans Mono-16
+Emacs.font: DejaVu Sans Mono-12

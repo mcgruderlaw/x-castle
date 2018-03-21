@@ -2,7 +2,7 @@ Xcursor.theme: Bluecurve
 
 URxvt*depth : 32
 URxvt*buffered: true
-URxvt*font: xft:DejaVu Sans Mono:size=16:antialias=true,xft:Liberation-fonts:antialias=false,xft:NotoColorEmoji:antialias=false,xft:Libertine:antialias=false:-*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
+URxvt*font: xft:DejaVu Sans Mono:size=12:antialias=true,xft:Liberation-fonts:antialias=false,xft:NotoColorEmoji:antialias=false,xft:Libertine:antialias=false:-*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
 URxvt*termName: rxvt-unicode-256color
 URxvt*scrollBar: false
 URxvt*lineSpace: 15
@@ -100,7 +100,7 @@ XTerm.termName: xterm-256color
 ! Fonts ====================================================
 ! set font and fontsize
 XTerm*faceName: DejaVu Sans Mono
-XTerm*faceSize: 16
+XTerm*faceSize: 12
 
 ! VT Font Menu: Unreadable
 xterm*faceSize1: 10
@@ -354,4 +354,4 @@ set colorscheme solarized
 - https://github.com/gotbletu
 - gotbletu@gmail.com
 
-Emacs.font: DejaVu Sans Mono-14
+Emacs.font: DejaVu Sans Mono-12

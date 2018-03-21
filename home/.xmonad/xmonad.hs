@@ -226,7 +226,7 @@ myStartupHook = do
     --myStartupHook :: X ()
     --ewmhDesktopsStartup
     --spawnOn "1" "qt.sh"
-    spawnOn "1" "emacs"
+    spawnOn "1" "emacs-26-vcs"
     --spawnOn "2" "urxvt"
     --spawnOn "5" "mpv"
     --spawnOn "Shell1" "xterm"

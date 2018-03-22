@@ -2,7 +2,7 @@ Xcursor.theme: Bluecurve
 
 URxvt*depth : 32
 URxvt*buffered: true
-URxvt*font: xft:DejaVu Sans Mono:size=12:antialias=true,xft:Liberation-fonts:antialias=false,xft:NotoColorEmoji:antialias=false,xft:Libertine:antialias=false:-*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
+URxvt*font: xft:DejaVu Sans Mono:size=10:antialias=true,xft:Liberation-fonts:antialias=false,xft:NotoColorEmoji:antialias=false,xft:Libertine:antialias=false:-*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
 URxvt*termName: rxvt-unicode-256color
 URxvt*scrollBar: false
 URxvt*lineSpace: 15
@@ -100,20 +100,22 @@ XTerm.termName: xterm-256color
 ! Fonts ====================================================
 ! set font and fontsize
 XTerm*faceName: DejaVu Sans Mono
-XTerm*faceSize: 12
+XTerm*faceSize: 10
 
 ! VT Font Menu: Unreadable
-xterm*faceSize1: 10
+xterm*faceSize1: 8
 ! VT font menu: Tiny
-xterm*faceSize2: 12
+xterm*faceSize2: 10
 ! VT font menu: Medium
-xterm*faceSize3: 14
+xterm*faceSize3: 12
 ! VT font menu: Large
-xterm*faceSize4: 16
+xterm*faceSize4: 14
 ! VT font menu: Huge
-xterm*faceSize5: 22
+xterm*faceSize5: 16
 ! My added "Huger" font
-xterm*faceSize6: 25
+xterm*faceSize6: 22
+!!! My added "Huger" font
+!!xterm*faceSize6: 25
 
 
 ! Ensure that your locale is set up for UTF-8. If you do not use UTF-8, you may need to force xterm to more strictly follow your locale by setting
@@ -248,6 +250,8 @@ XTerm*on3Clicks: regex ([[:alpha:]]+://)?([[:alnum:]!#+,./=?@_~-]|(%[[:xdigit:]]
 ! xterm*faceName: Monospace
 ! }}}
 
+Emacs.font: DejaVu Sans Mono-10
+
 !####################
 !###### Themes ######
 !####################
@@ -354,4 +358,4 @@ set colorscheme solarized
 - https://github.com/gotbletu
 - gotbletu@gmail.com
 
-Emacs.font: DejaVu Sans Mono-12
+

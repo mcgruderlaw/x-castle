@@ -43,8 +43,8 @@ xcompmgr -r7 -o 0.25 -l-10 -t-8 -D7 &
 ##exec xterm -e ranger &
 ##exec xterm &
 # exec xterm -g 80x50 &
-exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
 # ...or the Window Manager of your choice
 # exec urxvt -g 174x31
 # exec urxvt -g 136x26
-
+exec dbus-launch --exit-with-session emacs
+# exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad

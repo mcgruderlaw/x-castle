@@ -250,7 +250,7 @@ XTerm*on3Clicks: regex ([[:alpha:]]+://)?([[:alnum:]!#+,./=?@_~-]|(%[[:xdigit:]]
 ! xterm*faceName: Monospace
 ! }}}
 
-Emacs.font: DejaVu Sans Mono-16
+Emacs.font: DejaVu Sans Mono-13
 
 !####################
 !###### Themes ######

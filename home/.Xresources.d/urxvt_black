@@ -254,4 +254,4 @@ XTerm*on3Clicks: regex ([[:alpha:]]+://)?([[:alnum:]!#+,./=?@_~-]|(%[[:xdigit:]]
 ! }}}
 
 Emacs.font: DejaVu Sans Mono-14
-Emacs.scaleHeight: 1.3
+Emacs.scaleHeight: 1.3	       

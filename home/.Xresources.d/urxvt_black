@@ -99,7 +99,7 @@ XTerm.termName: xterm-256color
 ! Fonts ====================================================
 ! set font and fontsize
 XTerm*faceName: DejaVu Sans Mono
-XTerm*faceSize: 10
+XTerm*faceSize: 12
 
 ! VT Font Menu: Unreadable
 xterm*faceSize1: 8

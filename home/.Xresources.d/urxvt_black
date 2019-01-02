@@ -99,7 +99,7 @@ XTerm.termName: xterm-256color
 ! Fonts ====================================================
 ! set font and fontsize
 XTerm*faceName: DejaVu Sans Mono
-XTerm*faceSize: 13
+XTerm*faceSize: 10
 
 ! VT Font Menu: Unreadable
 xterm*faceSize1: 8
@@ -253,5 +253,5 @@ XTerm*on3Clicks: regex ([[:alpha:]]+://)?([[:alnum:]!#+,./=?@_~-]|(%[[:xdigit:]]
 ! xterm*faceName: Monospace
 ! }}}
 
-Emacs.font: DejaVu Sans Mono-14
+Emacs.font: DejaVu Sans Mono-10
 Emacs.scaleHeight: 1.3	       

@@ -1,5 +1,5 @@
 xterm*faceName: xft:Inconsolata:size=11:antialias=on
-xterm*termName: xterm-256color
+!xterm*termName: xterm-256color
 xterm*scaleHeight: 1.2
 
 #define S_base03        #002b36
@@ -11,12 +11,12 @@ xterm*scaleHeight: 1.2
 #define S_base2         #eee8d5
 #define S_base3         #fdf6e3
 
-*background:            S_base03
-*foreground:            S_base0
-*fadeColor:             S_base03
-*cursorColor:           S_base1
-*pointerColorBackground:S_base01
-*pointerColorForeground:S_base1
+xterm*background:            S_base03
+xterm*foreground:            S_base0
+xterm*fadeColor:             S_base03
+xterm*cursorColor:           S_base1
+xterm*pointerColorBackground:S_base01
+xterm*pointerColorForeground:S_base1
 
 #define S_yellow        #b58900
 #define S_orange        #cb4b16

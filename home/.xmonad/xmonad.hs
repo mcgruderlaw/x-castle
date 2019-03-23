@@ -235,6 +235,6 @@ myStartupHook = do
 
 myLogHook = fadeWindowsLogHook myFadeHook
 
-myFadeHook = composeAll [opacity 0.93
-                        , isUnfocused --> opacity 0.85
+myFadeHook = composeAll [opacity 1.00
+                        , isUnfocused --> opacity 1.00
                         ]

@@ -69,7 +69,7 @@ myBorderWidth   = 4
 
 myNormalBorderColor     = "#000000"
 
-myFocusedBorderColor    = "#FFFFFF" --"#dc322f" "#005f00" "#ff0000" "#222200"
+myFocusedBorderColor    = "#005f00" --"#FFFFFF" "#dc322f" "#005f00" "#ff0000" "#222200"
 
 myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     -- myWorkspaces = [ "Web", "Evernote", "Drafting", "Shell", "Mail", "Music", "IRC", "News", "Transmission", "Misc."]
@@ -235,6 +235,6 @@ myStartupHook = do
 
 myLogHook = fadeWindowsLogHook myFadeHook
 
-myFadeHook = composeAll [opacity 0.93
-                        , isUnfocused --> opacity 0.85
+myFadeHook = composeAll [opacity 1.00
+                        , isUnfocused --> opacity 1.00
                         ]

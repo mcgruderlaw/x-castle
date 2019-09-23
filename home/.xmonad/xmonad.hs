@@ -1,7 +1,7 @@
 import XMonad
 import Data.Monoid
 import Data.Ratio
-import Graphics.X11.ExtraTypes.XF86  
+import Graphics.X11.ExtraTypes.XF86
 import System.Exit
 import System.IO
 import XMonad.Actions.CycleWS
@@ -26,7 +26,7 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.SimpleFloat
 import XMonad.Layout.Spacing
 import XMonad.Layout.StackTile
-import XMonad.Layout.Tabbed 
+import XMonad.Layout.Tabbed
 import XMonad.Layout.ToggleLayouts
 import XMonad.ManageHook
 import XMonad.Prompt
@@ -79,20 +79,20 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- github boylemic/configs
     -- launch a terminal
     [ ((myModMask,              xK_Return), spawn "xterm")
- 
+
     -- launch dmenu
     --, ((myModMask,               xK_d     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
     , ((myModMask,               xK_p     ), spawn "dmenu_run")
- 
+
     -- launch gmrun
     --, ((myModMask .|. shiftMask, xK_p     ), spawn "gmrun")
- 
+
     -- close focused window
     , ((myModMask .|. shiftMask, xK_c     ), kill)
- 
+
      -- Rotate through the available layout algorithms
     , ((myModMask,               xK_space ), sendMessage NextLayout)
- 
+
     --  Reset the layouts on the current workspace to default
     , ((myModMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
 
@@ -105,61 +105,61 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- Resize viewed windows to the correct size
     , ((myModMask,               xK_r   ), refresh)
- 
+
     -- Move focus to the next window
     , ((myModMask,               xK_Tab   ), windows W.focusDown)
- 
+
     -- Move focus to the next window
     , ((myModMask,               xK_j     ), windows W.focusDown)
- 
+
     -- Move focus to the previous window
     , ((myModMask,               xK_k     ), windows W.focusUp  )
-    
+
     -- Volume Control
     ,((0, xF86XK_AudioMute), spawn "amixer set Master toggle")
     , ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 5%- unmute")
     , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 5%+ unmute")
-    
+
     -- Brightness Control
     , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
     , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
- 
+
     -- Move focus to the master window
     , ((myModMask,               xK_m     ), windows W.focusMaster  )
- 
+
     -- Swap the focused window and the master window
     , ((myModMask .|. shiftMask, xK_Return), windows W.swapMaster)
- 
+
     -- Swap the focused window with the next window
     , ((myModMask .|. shiftMask, xK_j     ), windows W.swapDown  )
- 
+
     -- Swap the focused window with the previous window
     , ((myModMask .|. shiftMask, xK_k     ), windows W.swapUp    )
- 
+
     -- Shrink the master area
     , ((myModMask,               xK_h     ), sendMessage Shrink)
- 
+
     -- Expand the master area
     , ((myModMask,               xK_l     ), sendMessage Expand)
- 
+
     -- Push window back into tiling
     , ((myModMask,               xK_t     ), withFocused $ windows . W.sink)
- 
+
     -- Increment the number of windows in the master area
     , ((myModMask              , xK_comma ), sendMessage (IncMasterN 1))
- 
+
     -- Deincrement the number of windows in the master area
     , ((myModMask              , xK_period), sendMessage (IncMasterN (-1)))
- 
+
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
     --
     -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
- 
+
     -- Quit xmonad
     , ((myModMask .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
- 
+
     -- Restart xmonad
     , ((myModMask              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
 
@@ -167,7 +167,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , (( myModMask, xK_f), safeSpawn "firefox" [])
     --, (( myModMask, xK_p), spawn "dmenu_run")
     , (( myModMask, xK_w), spawn "qt.sh")
-    , (( myModMask, xK_e), spawn "emacs-27-vcs")
+    , (( myModMask, xK_e), spawn "emacsclient -nc")
     , (( myModMask .|. shiftMask, xK_l ), spawn "xterm -e lawflash.sh")
     , (( myModMask .|. shiftMask, xK_w ), spawn "xterm -e w3m")
     , (( myModMask .|. shiftMask, xK_r), spawn "xterm -e ranger")
@@ -195,28 +195,28 @@ myLayout = nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR ||| StackTile 1
     --myLayout = mkToggle (single REFLECTX) $
     --           mkToggle (single REFLECTY) $
     --               (tiled ||| tiledR ||| Mirror tiled ||| Full)
-                  where  
-                       -- default tiling algorithm partitions the screen into two panes  
-                       tiled = Tall nmaster delta ratio  
-                    
-                       -- reflected default tiling algorithm partitions the screen into two panes  
-                       tiledR = reflectHoriz $ Tall nmaster delta ratio  
-					
-                       -- The default number of windows in the master pane  
-                       nmaster = 1  
-                    
-                       -- Default proportion of screen occupied by master pane  
+                  where
+                       -- default tiling algorithm partitions the screen into two panes
+                       tiled = Tall nmaster delta ratio
+
+                       -- reflected default tiling algorithm partitions the screen into two panes
+                       tiledR = reflectHoriz $ Tall nmaster delta ratio
+
+                       -- The default number of windows in the master pane
+                       nmaster = 1
+
+                       -- Default proportion of screen occupied by master pane
                        ratio = (1/2)
-                    
-                       -- Percent of screen to increment by when resizing panes  
+
+                       -- Percent of screen to increment by when resizing panes
                        delta = (3/100)
 
 nobordersLayout = smartBorders $ Full
 
 myManageHook = composeAll
      [ className =? "qutebrowser" --> doShift "1"
-     , className =? "mpv" --> doFloat 
-     , className =? "feh" --> doFloat 
+     , className =? "mpv" --> doFloat
+     , className =? "feh" --> doFloat
      ]
 
 myEventHook = fadeWindowsEventHook {- ... -}
@@ -226,7 +226,7 @@ myStartupHook = do
     --myStartupHook :: X ()
     --ewmhDesktopsStartup
     --spawnOn "1" "qt.sh"
-    spawnOn "1" "emacs-26-vcs"
+    spawnOn "1" "emacs-27-vcs --daemon"
     --spawnOn "2" "urxvt"
     --spawnOn "5" "mpv"
     --spawnOn "Shell1" "xterm"

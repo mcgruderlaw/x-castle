@@ -67,7 +67,7 @@ myModMask       = mod4Mask
 
 myBorderWidth   = 4
 
-myNormalBorderColor     = "#000000"
+myNormalBorderColor     = "#005f00" --"#000000"
 
 myFocusedBorderColor    = "#dc322f" --"#FFFFFF" "#dc322f" "#005f00" "#ff0000" "#222200"
 

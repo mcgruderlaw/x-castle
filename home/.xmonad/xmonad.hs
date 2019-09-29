@@ -69,7 +69,7 @@ myBorderWidth   = 4
 
 myNormalBorderColor     = "#000000"
 
-myFocusedBorderColor    = "#005f00" --"#FFFFFF" "#dc322f" "#005f00" "#ff0000" "#222200"
+myFocusedBorderColor    = "#dc322f" --"#FFFFFF" "#dc322f" "#005f00" "#ff0000" "#222200"
 
 myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     -- myWorkspaces = [ "Web", "Evernote", "Drafting", "Shell", "Mail", "Music", "IRC", "News", "Transmission", "Misc."]

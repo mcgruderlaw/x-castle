@@ -19,7 +19,7 @@ fi
 # xmodmap ~/.Xmodmap
 # xmodmap ~/.Xmodmap
 
-unclutter -grab &
+###############unclutter -grab &
 
 # xcompmgr -cCfF -r7 -o 0.25 -l-10 -t-8 -D7 &
 xcompmgr -r7 -o 0.25 -l-10 -t-8 -D7 &
@@ -33,7 +33,7 @@ xcompmgr -r7 -o 0.25 -l-10 -t-8 -D7 &
 
 # sh ~/.bin/.fehbg &
 
-/usr/bin/VBoxClient-all
+#########################/usr/bin/VBoxClient-all
 
 # exec gnome-session
 # exec ck-launch-session dbus-launch --sh-syntax --exit-with-session startkde
@@ -41,8 +41,10 @@ xcompmgr -r7 -o 0.25 -l-10 -t-8 -D7 &
 # exec awesome
 # exec xterm -e emacs &
 ##exec xterm -e ranger &
-##exec xterm &
-# exec xterm -g 80x50 &
+#exec xterm &
+#exec /usr/bin/xterm -g 80x50
+#exec /usr/bin/xterm -g 1220x60 #120x680
+#exec /usr/bin/tmux
 # ...or the Window Manager of your choice
 # exec urxvt -g 174x31
 # exec urxvt -g 136x26

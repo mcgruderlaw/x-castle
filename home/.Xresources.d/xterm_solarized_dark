@@ -1,5 +1,5 @@
 xterm*faceName: xft:Inconsolata:size=14:antialias=on
-!xterm*termName: xterm-256color
+xterm*termName: xterm-256color
 xterm*scaleHeight: 1.2
 
 #define S_base03        #002b36

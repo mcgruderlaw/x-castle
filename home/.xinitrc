@@ -48,5 +48,5 @@ xcompmgr -r7 -o 0.25 -l-10 -t-8 -D7 &
 # ...or the Window Manager of your choice
 # exec urxvt -g 174x31
 # exec urxvt -g 136x26
-# exec dbus-launch --exit-with-session emacs-27-vcs
-exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
+exec dbus-launch --exit-with-session emacs-27-vcs
+#exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad

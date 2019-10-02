@@ -16,13 +16,13 @@ fi
 # xrdb ~/.Xresources
 # xrdb ~/.homesick/repos/x-castle/home/.xresources/.Xresources.connermcd
 
-# xmodmap ~/.Xmodmap
-# xmodmap ~/.Xmodmap
+#xmodmap ~/.Xmodmap
+#xmodmap ~/.Xmodmap
 
-###############unclutter -grab &
+###########################unclutter -grab &
 
 # xcompmgr -cCfF -r7 -o 0.25 -l-10 -t-8 -D7 &
-xcompmgr -r7 -o 0.25 -l-10 -t-8 -D7 &
+############################xcompmgr -r7 -o 0.25 -l-10 -t-8 -D7 &
 #devilspie -a &
 
 # canto-fetch -db
@@ -48,5 +48,7 @@ xcompmgr -r7 -o 0.25 -l-10 -t-8 -D7 &
 # ...or the Window Manager of your choice
 # exec urxvt -g 174x31
 # exec urxvt -g 136x26
-exec dbus-launch --exit-with-session emacs-27-vcs -fs
-# exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
+# exec dbus-launch --exit-with-session emacs-27-vcs -fs
+# exec dbus-launch --exit-with-session emacs-27-vcs
+# exec dbus-launch --exit-with-session emacs-27-vcs --daemon -f exwm-enable &
+exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad

@@ -1,6 +1,6 @@
-xterm*faceName: xft:Inconsolata:size=14:antialias=on
+xterm*faceName: xft:DejaVu Sans Mono:size=14:antialias=on
 xterm*termName: xterm-256color
-xterm*scaleHeight: 1.2
+xterm*scaleHeight: 1.3
 
 #define S_base03        #002b36
 #define S_base02        #073642

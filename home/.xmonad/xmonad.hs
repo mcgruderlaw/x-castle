@@ -71,10 +71,11 @@ myNormalBorderColor     = "#005f00" --"#000000"
 
 myFocusedBorderColor    = "#dc322f" --"#FFFFFF" "#dc322f" "#005f00" "#ff0000" "#222200"
 
-myWorkspaces = [ "emacs", "www", "bt", "mus", "rss", "wts", "1", "2", "3"]
+myWorkspaces = [ "emacs", "tmux", "1", "2", "3"]
+--myWorkspaces = [ "emacs", "www", "bt", "mus", "rss", "wts", "1", "2", "3"]
 --myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    -- myWorkspaces = [ "Web", "Evernote", "Drafting", "Shell", "Mail", "Music", "IRC", "News", "Transmission", "Misc."]
-    -- myWorkspaces = [ "Web", "Drafting", "Shell1", "Shell2", "Mail", "Music", "IRC", "News", "Misc."]
+--myWorkspaces = [ "Web", "Evernote", "Drafting", "Shell", "Mail", "Music", "IRC", "News", "Transmission", "Misc."]
+--myWorkspaces = [ "Web", "Drafting", "Shell1", "Shell2", "Mail", "Music", "IRC", "News", "Misc."]
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- github boylemic/configs
@@ -229,10 +230,10 @@ myStartupHook = do
     --spawnOn "1" "qt.sh"
     --spawnOn "2" "emacsclient-emacs-27-vcs"
     --spawnOn "9" "firefox"
-    spawnOn "emacs" "emacs-27-vcs"
-    spawnOn "bt" "xterm -e transmission-daemon"
-    spawnOn "rss" "xterm -e newsboat"
-    spawnOn "wts" "xterm -e 'watch ts"
+    --spawnOn "emacs" "emacs-27-vcs"
+    --spawnOn "bt" "xterm -e transmission-daemon"
+    --spawnOn "rss" "xterm -e newsboat"
+    --spawnOn "wts" "xterm -e 'watch ts"
     --spawnOn "2" "urxvt"
     --spawnOn "5" "mpv"
     --spawnOn "www" "xterm -e w3m -v"

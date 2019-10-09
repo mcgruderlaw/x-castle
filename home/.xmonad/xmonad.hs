@@ -57,7 +57,7 @@ myConfig = def
     --, manageHook        = doCenterFloat <+> myManageHook
     , manageHook        = myManageHook <+> manageSpawn
     , handleEventHook   = myEventHook
-    , startupHook       = myStartupHook
+    --, startupHook       = myStartupHook
     , logHook           = myLogHook
     }
 
@@ -223,7 +223,7 @@ myManageHook = composeAll
 
 myEventHook = fadeWindowsEventHook {- ... -}
 
-myStartupHook = do
+--myStartupHook = do
     --myStartupHook = ewmhDesktopsStartup
     --myStartupHook :: X ()
     --ewmhDesktopsStartup

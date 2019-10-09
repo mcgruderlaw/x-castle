@@ -41,7 +41,8 @@ fi
 # exec awesome
 # exec xterm -e emacs &
 ##exec xterm -e ranger &
-#exec xterm &
+# exec firefox
+# exec xterm
 #exec /usr/bin/xterm -g 80x50
 #exec /usr/bin/xterm -g 1220x60 #120x680
 #exec /usr/bin/tmux

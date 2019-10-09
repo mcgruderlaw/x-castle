@@ -1,6 +1,8 @@
 xterm*faceName: xft:DejaVu Sans Mono:size=14:antialias=on
 xterm*termName: xterm-256color
 xterm*scaleHeight: 1.3
+xterm*geometry: 173x35+0+0
+xterm*SmeBSB: toolbar
 
 #define S_base03        #002b36
 #define S_base02        #073642

@@ -41,7 +41,7 @@ import qualified XMonad.StackSet as W
 main :: IO ()
 main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 myBar = "xmobar"
-myPP = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "<" ">" }
+myPP = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "[" "]" }
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
 myConfig = def
@@ -55,7 +55,7 @@ myConfig = def
     , layoutHook        = myLayout
     --, manageHook        = myManageHook <+> doCenterFloat <+> manageHook def <+> manageDocks
     --, manageHook        = doCenterFloat <+> myManageHook
-    , manageHook        = myManageHook
+    , manageHook        = myManageHook <+> manageSpawn
     , handleEventHook   = myEventHook
     , startupHook       = myStartupHook
     , logHook           = myLogHook
@@ -71,18 +71,19 @@ myNormalBorderColor     = "#005f00" --"#000000"
 
 myFocusedBorderColor    = "#dc322f" --"#FFFFFF" "#dc322f" "#005f00" "#ff0000" "#222200"
 
-myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+myWorkspaces = [ "emacs", "www", "bt", "mus", "rss", "wts", "1", "2", "3"]
+--myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     -- myWorkspaces = [ "Web", "Evernote", "Drafting", "Shell", "Mail", "Music", "IRC", "News", "Transmission", "Misc."]
     -- myWorkspaces = [ "Web", "Drafting", "Shell1", "Shell2", "Mail", "Music", "IRC", "News", "Misc."]
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- github boylemic/configs
     -- launch a terminal
-    [ ((myModMask,              xK_Return), spawn "xterm")
+    [ ((myModMask,              xK_Return), spawnHere "xterm")
 
     -- launch dmenu
     --, ((myModMask,               xK_d     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
-    , ((myModMask,               xK_p     ), spawn "dmenu_run")
+    , ((myModMask .|. shiftMask, xK_o     ), spawn "dmenu_run")
 
     -- launch gmrun
     --, ((myModMask .|. shiftMask, xK_p     ), spawn "gmrun")
@@ -98,8 +99,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- workspaces from connermcd
     , ((modMask,               xK_s     ), toggleWS)
-    , ((modMask .|. shiftMask,               xK_s     ), prevWS)
+    , ((modMask .|. shiftMask, xK_s     ), prevWS)
     , ((modMask,               xK_n     ), nextWS)
+    , ((modMask,               xK_p     ), prevWS)
     , ((modMask .|. shiftMask, xK_p     ), shiftToPrev >> prevWS)
     , ((modMask .|. shiftMask, xK_n     ), shiftToNext >> nextWS)
 
@@ -165,14 +167,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     --My Added Ones
     , (( myModMask, xK_f), safeSpawn "firefox" [])
-    --, (( myModMask, xK_p), spawn "dmenu_run")
     , (( myModMask, xK_w), spawn "qt.sh")
-    , (( myModMask, xK_e), spawn "emacsclient -nc")
-    , (( myModMask .|. shiftMask, xK_l ), spawn "xterm -e lawflash.sh")
+    , (( myModMask, xK_e), spawn "emacs-27-vcs")
+    , (( myModMask .|. shiftMask, xK_l ), spawnHere "xterm -e lawflash.sh")
     , (( myModMask .|. shiftMask, xK_w ), spawn "xterm -e w3m")
     , (( myModMask .|. shiftMask, xK_r), spawn "xterm -e ranger")
-    , (( myModMask .|. shiftMask, xK_n ), spawn "xterm -e newsbeuter")
-    , (( myModMask .|. shiftMask, xK_y), spawn "xterm -e mpsyt")
+    , (( myModMask .|. shiftMask, xK_n ), spawn "xterm -e newsboat")
+    , (( myModMask .|. shiftMask, xK_y), spawnHere "xterm -e mpsyt")
     , (( myModMask .|. shiftMask, xK_m), spawn "xterm -e mutt")
     , (( myModMask,               xK_d     ), withFocused (keysResizeWindow (-10,-10) (1%2,1%2)))
     , (( myModMask,               xK_semicolon     ), withFocused (keysResizeWindow (10,10) (1%2,1%2)))
@@ -226,12 +227,18 @@ myStartupHook = do
     --myStartupHook :: X ()
     --ewmhDesktopsStartup
     --spawnOn "1" "qt.sh"
-    spawnOn "1" "emacs-27-vcs --daemon"
+    --spawnOn "2" "emacsclient-emacs-27-vcs"
+    --spawnOn "9" "firefox"
+    spawnOn "emacs" "emacs-27-vcs"
+    spawnOn "bt" "xterm -e transmission-daemon"
+    spawnOn "rss" "xterm -e newsboat"
+    spawnOn "wts" "xterm -e 'watch ts"
     --spawnOn "2" "urxvt"
     --spawnOn "5" "mpv"
-    --spawnOn "Shell1" "xterm"
+    --spawnOn "www" "xterm -e w3m -v"
     --spawnOn "Mail" "mutt"
     --spawnOn "Music" "vimpc"
+
 
 myLogHook = fadeWindowsLogHook myFadeHook
 

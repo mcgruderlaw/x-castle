@@ -1,4 +1,4 @@
-#Xcursor.theme: Bluecurve
+!Xcursor.theme: Bluecurve
 
 URxvt*depth : 32
 URxvt*buffered: true
@@ -237,9 +237,9 @@ XTerm*on3Clicks: regex ([[:alpha:]]+://)?([[:alnum:]!#+,./=?@_~-]|(%[[:xdigit:]]
 ! XTerm*foreground: WhiteSmoke
 ! XTerm*pointerColor: white
 ! XTerm*pointerColorBackground: #011622
-! XTerm*cursorColor: #EBD27D
-! XTerm*internalBorder: 3
-! XTerm*loginShell: true
+XTerm*cursorColor: #EBD27D
+XTerm*internalBorder: 3
+XTerm*loginShell: true
 ! XTerm*scrollBar: false
 ! XTerm*scrollKey: true
 ! XTerm*saveLines: 1250
@@ -256,5 +256,5 @@ XTerm*on3Clicks: regex ([[:alpha:]]+://)?([[:alnum:]!#+,./=?@_~-]|(%[[:xdigit:]]
 Emacs.font: DejaVu Sans Mono-14
 !Emacs.font: Inconsolata-14
 !Emacs.font: Menlo-13
-Emacs.scaleHeight: 1.3
-Emacs.Fullscreen: fullboth
+!Emacs.scaleHeight: 1.3
+Emacs.geometry: 173x15

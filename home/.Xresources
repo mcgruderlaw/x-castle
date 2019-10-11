@@ -2,4 +2,4 @@
 #include ".Xresources.d/xterm_solarized_dark"
 !#include ".Xresources.d/xterm_solarized_light"
 !#include ".Xresources.d/urxvt"
-#include ".Xresources.d/urxvt_black"
+!#include ".Xresources.d/urxvt_black"

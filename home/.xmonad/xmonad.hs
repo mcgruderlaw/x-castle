@@ -57,7 +57,7 @@ myConfig = def
     --, manageHook        = doCenterFloat <+> myManageHook
     , manageHook        = myManageHook <+> manageSpawn
     , handleEventHook   = myEventHook
-    --, startupHook       = myStartupHook
+    , startupHook       = myStartupHook
     , logHook           = myLogHook
     }
 
@@ -169,7 +169,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     --My Added Ones
     , (( myModMask, xK_f), safeSpawn "firefox" [])
     , (( myModMask, xK_w), spawn "qt.sh")
-    , (( myModMask, xK_e), spawn "emacs-27-vcs")
+    , (( myModMask, xK_e), spawn "emacsclient-emacs-27-vcs -nc")
     , (( myModMask .|. shiftMask, xK_l ), spawnHere "xterm -e lawflash.sh")
     , (( myModMask .|. shiftMask, xK_w ), spawn "xterm -e w3m")
     , (( myModMask .|. shiftMask, xK_r), spawn "xterm -e ranger")
@@ -223,12 +223,12 @@ myManageHook = composeAll
 
 myEventHook = fadeWindowsEventHook {- ... -}
 
---myStartupHook = do
+myStartupHook = do
     --myStartupHook = ewmhDesktopsStartup
     --myStartupHook :: X ()
     --ewmhDesktopsStartup
     --spawnOn "1" "qt.sh"
-    --spawnOn "2" "emacsclient-emacs-27-vcs"
+    spawnOn "tmux" "emacs-27-vcs --daemon"
     --spawnOn "9" "firefox"
     --spawnOn "emacs" "emacs-27-vcs"
     --spawnOn "bt" "xterm -e transmission-daemon"

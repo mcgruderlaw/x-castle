@@ -71,7 +71,7 @@ myNormalBorderColor     = "#005f00" --"#000000"
 
 myFocusedBorderColor    = "#dc322f" --"#FFFFFF" "#dc322f" "#005f00" "#ff0000" "#222200"
 
-myWorkspaces = [ "tmux" ]
+myWorkspaces = [ "xterm" ]
 --myWorkspaces = [ "emacs", "www", "bt", "mus", "rss", "wts", "1", "2", "3"]
 --myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 --myWorkspaces = [ "Web", "Evernote", "Drafting", "Shell", "Mail", "Music", "IRC", "News", "Transmission", "Misc."]

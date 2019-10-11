@@ -236,4 +236,4 @@ Emacs.font: DejaVu Sans Mono-12
 !Emacs.font: Inconsolata-14
 !Emacs.font: Menlo-13
 !Emacs.scaleHeight: 1.3
-Emacs.geometry: 173x15
+!Emacs.geometry: 173x15

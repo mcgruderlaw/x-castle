@@ -71,7 +71,7 @@ myNormalBorderColor     = "#005f00" --"#000000"
 
 myFocusedBorderColor    = "#dc322f" --"#FFFFFF" "#dc322f" "#005f00" "#ff0000" "#222200"
 
-myWorkspaces = [ "xterm" ]
+myWorkspaces = [ "main", "aux" ]
 --myWorkspaces = [ "emacs", "www", "bt", "mus", "rss", "wts", "1", "2", "3"]
 --myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 --myWorkspaces = [ "Web", "Evernote", "Drafting", "Shell", "Mail", "Music", "IRC", "News", "Transmission", "Misc."]
@@ -176,11 +176,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , (( myModMask .|. shiftMask, xK_n ), spawn "xterm -e newsboat")
     , (( myModMask .|. shiftMask, xK_y), spawnHere "xterm -e mpsyt")
     , (( myModMask .|. shiftMask, xK_m), spawn "xterm -e mutt")
-    , (( myModMask,               xK_d     ), withFocused (keysResizeWindow (-10,-10) (1%2,1%2)))
-    , (( myModMask,               xK_semicolon     ), withFocused (keysResizeWindow (10,10) (1%2,1%2)))
-    , (( myModMask .|. shiftMask, xK_d     ), withFocused (keysAbsResizeWindow (-10,-10) (0,0)))
-    , (( myModMask .|. shiftMask, xK_semicolon     ), withFocused (keysAbsResizeWindow (10,10) (0,0)))
-    , (( myModMask,               xK_a     ), withFocused (keysMoveWindowTo (800,384) (1%2,1%2)))
+    , (( myModMask,               xK_d     ), withFocused (keysResizeWindow (-10,0) (1,1)))
+    , (( myModMask,               xK_semicolon     ), withFocused (keysResizeWindow (10,0) (1,1)))
+    , (( myModMask .|. shiftMask, xK_d     ), withFocused (keysResizeWindow (0,-10) (1,1)))
+    , (( myModMask .|. shiftMask, xK_semicolon     ), withFocused (keysResizeWindow (0,50) (1%2,1)))
+    , (( myModMask,               xK_a     ), withFocused (keysMoveWindowTo (1900,1000) (1,1)))
     , (( myModMask,               xK_Right     ), withFocused (keysMoveWindow (10,0) ))
     , (( myModMask,               xK_Down     ), withFocused (keysMoveWindow (0,10) ))
     , (( myModMask,               xK_Left     ), withFocused (keysMoveWindow (-10,0) ))
@@ -219,6 +219,7 @@ myManageHook = composeAll
      [ className =? "qutebrowser" --> doShift "1"
      , className =? "mpv" --> doFloat
      , className =? "feh" --> doFloat
+     , className =? "emacs" --> doFloat
      ]
 
 myEventHook = fadeWindowsEventHook {- ... -}
@@ -228,7 +229,7 @@ myStartupHook = do
     --myStartupHook :: X ()
     --ewmhDesktopsStartup
     --spawnOn "1" "qt.sh"
-    spawnOn "tmux" "emacs-27-vcs --daemon"
+    spawnOn "main" "emacs-27-vcs --daemon"
     --spawnOn "9" "firefox"
     --spawnOn "emacs" "emacs-27-vcs"
     --spawnOn "bt" "xterm -e transmission-daemon"

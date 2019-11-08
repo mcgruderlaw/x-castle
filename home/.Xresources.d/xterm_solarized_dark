@@ -78,8 +78,8 @@ xterm*pointerColorForeground:S_base1
 
 ! Fonts ====================================================
 ! set font and fontsize
-xterm*faceName: xft:DejaVu Sans Mono:size=12:antialias=on
-XTerm*faceSize: 12
+xterm*faceName: xft:DejaVu Sans Mono:size=10:antialias=on
+XTerm*faceSize: 10
 
 ! VT Font Menu: Unreadable
 xterm*faceSize1: 8
@@ -106,7 +106,8 @@ XTerm.vt100.locale: true
 ! pointer and cursor (blinking and color)
 XTerm*pointerColor: white
 XTerm*pointerColorBackground: black
-XTerm*cursorColor: white
+XTerm*cursorColor: #EBD27D
+! XTerm*cursorColor: white
 XTerm*cursorBlink: true
 
 
@@ -217,7 +218,7 @@ XTerm*on3Clicks: regex ([[:alpha:]]+://)?([[:alnum:]!#+,./=?@_~-]|(%[[:xdigit:]]
 ! XTerm*foreground: WhiteSmoke
 ! XTerm*pointerColor: white
 ! XTerm*pointerColorBackground: #011622
-XTerm*cursorColor: #EBD27D
+! XTerm*cursorColor: #EBD27D
 XTerm*internalBorder: 3
 XTerm*loginShell: true
 ! XTerm*scrollBar: false

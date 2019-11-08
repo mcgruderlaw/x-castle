@@ -233,6 +233,15 @@ XTerm*loginShell: true
 ! xterm*faceName: Monospace
 ! }}}
 
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+Emacs.FontBackend: xft
 !Emacs.font: Inconsolata-10
 Emacs.font: DejaVu Sans Mono-10
 !Emacs.font: Menlo-13

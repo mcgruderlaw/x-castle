@@ -169,7 +169,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     --My Added Ones
     , (( myModMask, xK_f), safeSpawn "firefox" [])
     , (( myModMask, xK_w), spawn "qt.sh")
-    , (( myModMask, xK_e), spawn "emacsclient-emacs-27-vcs -nc")
+    , (( myModMask, xK_e), spawn "emacsclient-emacs-26 -nc")
     , (( myModMask .|. shiftMask, xK_l ), spawnHere "xterm -e lawflash.sh")
     , (( myModMask .|. shiftMask, xK_w ), spawn "xterm -e w3m")
     , (( myModMask .|. shiftMask, xK_r), spawn "xterm -e ranger")
@@ -219,7 +219,7 @@ myManageHook = composeAll
      [ className =? "qutebrowser" --> doShift "1"
      , className =? "mpv" --> doFloat
      , className =? "feh" --> doFloat
-     , className =? "emacs" --> doFloat
+     , className =? "emacsclient-emacs-26 -nc" --> doFloat
      ]
 
 myEventHook = fadeWindowsEventHook {- ... -}
@@ -229,7 +229,7 @@ myStartupHook = do
     --myStartupHook :: X ()
     --ewmhDesktopsStartup
     --spawnOn "1" "qt.sh"
-    spawnOn "main" "emacs-27-vcs --daemon"
+    spawnOn "main" "emacs-26 --daemon"
     --spawnOn "9" "firefox"
     --spawnOn "emacs" "emacs-27-vcs"
     --spawnOn "bt" "xterm -e transmission-daemon"

@@ -244,7 +244,7 @@ Xft.lcdfilter: lcddefault
 
 Emacs.FontBackend: xft
 !Emacs.font: Inconsolata-10
-Emacs.font: DejaVu Sans Mono-10
+Emacs.font: DejaVu Sans Mono-11
 !Emacs.font: Menlo-13
 !Emacs.scaleHeight: 1.3
 !Emacs.geometry: 173x15

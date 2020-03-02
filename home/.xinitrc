@@ -13,6 +13,18 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 [[ -f ~/.Xresources ]] && xrdb -I$HOME ~/.Xresources
+
+# From Gentoo Wiki
+# https://wiki.gentoo.org/wiki/GnuPG#Using_a_GPG_agent
+if [ -x /usr/bin/gpg-agent ]; then
+ eval "$(/usr/bin/gpg-agent --daemon)"
+fi
+
+if [ -n "${GPG_AGENT_INFO}" ]; then
+  kill $(echo ${GPG_AGENT_INFO} | cut -d':' -f 2) >/dev/null 2>&1
+fi
+
+
 # xrdb ~/.Xresources
 # xrdb ~/.homesick/repos/x-castle/home/.xresources/.Xresources.connermcd
 

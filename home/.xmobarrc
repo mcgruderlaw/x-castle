@@ -1,4 +1,4 @@
-Config { font = "xft:DejaVu Sans Mono:size=10,xft:Monospace"
+Config { font = "xft:DejaVu Sans Mono:size=9,xft:Monospace"
     , bgColor = "#002b36"  --"#000000" --Solarized "#002b36"
     , fgColor = "#a8a8a8"
     , position = Bottom

@@ -78,14 +78,14 @@ xterm*pointerColorForeground:S_base1
 
 ! Fonts ====================================================
 ! set font and fontsize
-xterm*faceName: xft:DejaVu Sans Mono:size=10:antialias=on
+xterm*faceName: xft:DejaVu Sans Mono:size=16:antialias=on
 !XTerm*faceSize: 10
 
-xterm*faceSize1: 6
+!xterm*faceSize1: 6
 ! VT Font Menu: Unreadable
-xterm*faceSize2: 8
+!xterm*faceSize2: 8
 ! VT font menu: Tiny
-xterm*faceSize3: 10
+!xterm*faceSize3: 10
 ! VT font menu: Medium
 xterm*faceSize4: 11
 ! VT font menu: Large
@@ -247,7 +247,8 @@ Xft.lcdfilter: lcddefault
 
 Emacs.FontBackend: xft
 !Emacs.font: Inconsolata-10
-Emacs.font: DejaVu Sans Mono-10
+Emacs.font: DejaVu Sans Mono-16
+Emacs.pane.menubar.*.renderTable.fontStyle: bold
 !Emacs.font: Menlo-13
 !Emacs.scaleHeight: 1.3
 !Emacs.geometry: 173x15

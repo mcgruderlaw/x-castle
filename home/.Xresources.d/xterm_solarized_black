@@ -30,7 +30,7 @@ xterm*background:            #000000
 xterm*foreground:            S_base0
 xterm*fadeColor:             #000000
 xterm*cursorColor:           S_base1
-xterm*pointerColorBackground:S_base01
+xterm*pointerColorBackground:#000000
 xterm*pointerColorForeground:S_base1
 
 #define S_yellow        #b58900

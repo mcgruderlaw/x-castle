@@ -47,6 +47,14 @@ fi
 
 #########################/usr/bin/VBoxClient-all
 
+xset +fp /usr/share/fonts/dejavu/
+
+#sudo pulseaudio -D
+start-pulseaudio-x11 &
+
+# dwmstatus 2>&1 >/dev/null &
+slstatus &
+
 # exec gnome-session
 # exec ck-launch-session dbus-launch --sh-syntax --exit-with-session startkde
 # exec startxfce4
@@ -64,4 +72,7 @@ fi
 # exec dbus-launch --exit-with-session emacs-27-vcs -fs
 # exec dbus-launch --exit-with-session emacs-27-vcs
 # exec dbus-launch --exit-with-session emacs-27-vcs --daemon -f exwm-enable &
-exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
+# exec dbus-launch --exit-with-session emacs-26 --daemon -f exwm-enable &
+# exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
+# exec ck-launch-session dbus-launch --sh-syntax --exit-with-session dwm
+exec dbus-launch --exit-with-session dwm

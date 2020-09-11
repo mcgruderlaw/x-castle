@@ -1,7 +1,8 @@
 XTerm.termName: xterm-256color
 
 xterm*background:            #000000
-xterm*foreground:            S_base0
+!xterm*foreground:            S_base0
+xterm*foreground:            lightgray
 !xterm*fadeColor:             #000000
 !xterm*cursorColor:           S_base1
 !xterm*pointerColorBackground:#000000
@@ -118,6 +119,8 @@ Xft.lcdfilter: lcddefault
 Emacs.FontBackend: xft
 !Emacs.font: Inconsolata-10
 Emacs.font: DejaVu Sans Mono-12
+Emacs*foreground: #839496
+Emacs*background: #000000
 Emacs.pane.menubar.*.renderTable.fontStyle: bold
 !Emacs.font: Menlo-13
 !Emacs.scaleHeight: 1.3

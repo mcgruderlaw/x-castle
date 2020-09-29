@@ -13,7 +13,7 @@ xterm*scaleHeight: 1.2
 ! Fonts ====================================================
 ! set font and fontsize
 xterm*faceName: xft:DejaVu Sans Mono:size=10:antialias=on
-!XTerm*faceSize: 10
+!XTerm*faceSize: 11
 
 !xterm*faceSize1: 6
 ! VT Font Menu: Unreadable

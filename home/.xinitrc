@@ -49,8 +49,7 @@ fi
 
 xset +fp /usr/share/fonts/dejavu/
 
-#sudo pulseaudio -D
-start-pulseaudio-x11 &
+[ $HOSTNAME == 'ideapad' ] && pulseaudio --start && start-pulseaudio-x11 &
 
 # dwmstatus 2>&1 >/dev/null &
 slstatus &

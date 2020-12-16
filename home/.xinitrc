@@ -74,4 +74,5 @@ slstatus &
 # exec dbus-launch --exit-with-session emacs-26 --daemon -f exwm-enable &
 # exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
 # exec ck-launch-session dbus-launch --sh-syntax --exit-with-session dwm
-exec dbus-launch --exit-with-session dwm
+# exec dbus-launch --exit-with-session dwm
+exec dbus-launch --sh-syntax --exit-with-session xmonad

@@ -229,9 +229,9 @@ myStartupHook = do
     --myStartupHook :: X ()
     --ewmhDesktopsStartup
     --spawnOn "1" "qt.sh"
-    spawnOn "main" "emacs-26 --daemon"
-    --spawnOn "9" "firefox"
-    --spawnOn "emacs" "emacs-27-vcs"
+    --spawnOn "main" "emacs-26 --daemon"
+    spawnOn "1" "firefox"
+    spawnOn "1" "emacs"
     --spawnOn "bt" "xterm -e transmission-daemon"
     --spawnOn "rss" "xterm -e newsboat"
     --spawnOn "wts" "xterm -e 'watch ts"

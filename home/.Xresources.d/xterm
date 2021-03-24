@@ -1,8 +1,11 @@
 XTerm.termName: xterm-256color
 
-xterm*background:            #000000
+!!xterm*background:            #FAFAFA
 !xterm*foreground:            S_base0
-xterm*foreground:            lightgray
+*foreground: black
+*background: white
+!!xterm*foreground:            black
+!!XTerm.reverseVideo: true
 !xterm*fadeColor:             #000000
 !xterm*cursorColor:           S_base1
 !xterm*pointerColorBackground:#000000
@@ -12,12 +15,16 @@ xterm*scaleHeight: 1.2
 
 ! Fonts ====================================================
 ! set font and fontsize
-xterm*faceName: xft:DejaVu Sans Mono:size=10:antialias=on
+!xterm*faceName: xft:DejaVu Sans Mono:size=10:antialias=on
+xterm*font: xft:LiberationMono-Regular:size=9:antialias=on
+!xterm*font: xft:FantasqueSansMono:size=10:antialias=on
 !XTerm*faceSize: 11
 
 !xterm*faceSize1: 6
 ! VT Font Menu: Unreadable
-xterm*faceSize2: 8
+xterm*faceSize1: 8
+! VT Font Menu: Small
+xterm*faceSize2: 9
 ! VT font menu: Tiny
 xterm*faceSize3: 10
 ! VT font menu: Medium
@@ -27,7 +34,7 @@ xterm*faceSize5: 12
 ! VT font menu: Huge
 xterm*faceSize6: 14
 ! My added "Huger" font
-xterm*faceSize7: 16
+!xterm*faceSize7: 16
 !!! My added "Huger" font
 !xterm*faceSize8: 22
 !!! My added "Huger" font
@@ -118,9 +125,10 @@ Xft.lcdfilter: lcddefault
 
 Emacs.FontBackend: xft
 !Emacs.font: Inconsolata-10
-Emacs.font: DejaVu Sans Mono-10
-Emacs*foreground: #839496
-Emacs*background: #121212
+!Emacs.font: DejaVu Sans Mono-10
+!Emacs.font: LiberationMono-Regular-9
+!Emacs*foreground: #839496
+!Emacs*background: #121212
 Emacs.pane.menubar.*.renderTable.fontStyle: bold
 !Emacs.font: Menlo-13
 Emacs.scaleHeight: 1.3

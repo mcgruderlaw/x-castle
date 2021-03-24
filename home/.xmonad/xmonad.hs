@@ -71,9 +71,9 @@ myNormalBorderColor     = "#005f00" --"#000000"
 
 myFocusedBorderColor    = "#dc322f" --"#FFFFFF" "#dc322f" "#005f00" "#ff0000" "#222200"
 
-myWorkspaces = [ "main", "aux" ]
+--myWorkspaces = [ "main", "aux" ]
 --myWorkspaces = [ "emacs", "www", "bt", "mus", "rss", "wts", "1", "2", "3"]
---myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 --myWorkspaces = [ "Web", "Evernote", "Drafting", "Shell", "Mail", "Music", "IRC", "News", "Transmission", "Misc."]
 --myWorkspaces = [ "Web", "Drafting", "Shell1", "Shell2", "Mail", "Music", "IRC", "News", "Misc."]
 
@@ -84,7 +84,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- launch dmenu
     --, ((myModMask,               xK_d     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
-    , ((myModMask .|. shiftMask, xK_o     ), spawn "dmenu_run")
+    , ((myModMask .|. shiftMask,   xK_o     ), spawn "dmenu_run")
 
     -- launch gmrun
     --, ((myModMask .|. shiftMask, xK_p     ), spawn "gmrun")
@@ -124,8 +124,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 5%+ unmute")
 
     -- Brightness Control
-    , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
-    , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
+    , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 1")
+    , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 1")
 
     -- Move focus to the master window
     , ((myModMask,               xK_m     ), windows W.focusMaster  )
@@ -169,7 +169,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     --My Added Ones
     , (( myModMask, xK_f), safeSpawn "firefox" [])
     , (( myModMask, xK_w), spawn "qt.sh")
-    , (( myModMask, xK_e), spawn "emacsclient-emacs-26 -nc")
+    , (( myModMask, xK_e), spawn "emacs")
     , (( myModMask .|. shiftMask, xK_l ), spawnHere "xterm -e lawflash.sh")
     , (( myModMask .|. shiftMask, xK_w ), spawn "xterm -e w3m")
     , (( myModMask .|. shiftMask, xK_r), spawn "xterm -e ranger")
@@ -229,9 +229,9 @@ myStartupHook = do
     --myStartupHook :: X ()
     --ewmhDesktopsStartup
     --spawnOn "1" "qt.sh"
-    spawnOn "main" "emacs-26 --daemon"
-    --spawnOn "9" "firefox"
-    --spawnOn "emacs" "emacs-27-vcs"
+    --spawnOn "main" "emacs-26 --daemon"
+    spawnOn "1" "firefox"
+    spawnOn "1" "emacs"
     --spawnOn "bt" "xterm -e transmission-daemon"
     --spawnOn "rss" "xterm -e newsboat"
     --spawnOn "wts" "xterm -e 'watch ts"

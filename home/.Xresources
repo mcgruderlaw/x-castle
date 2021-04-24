@@ -1,6 +1,1 @@
-#include ".Xresources.d/xterm"
-!#include ".Xresources.d/xterm_solarized_dark"
-!#include ".Xresources.d/xterm_solarized_black"
-!#include ".Xresources.d/xterm_solarized_light"
-!#include ".Xresources.d/urxvt"
-!#include ".Xresources.d/urxvt_black"
+/home/dmc/.homesick/repos/x-castle/home/.Xresources.d/xterm

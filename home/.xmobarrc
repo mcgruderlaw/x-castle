@@ -27,7 +27,7 @@ Config { font = "xft:DejaVu Sans Mono:size=9,xft:Monospace"
                                  "-L", "-15", "-H", "-5",
                                  "-l", "red", "-m", "blue", "-h", "green"]
                                 100
-                 , Run Com "curl" ["icanhazip.com"] "wan" 5
+                 , Run Com "curl" ["icanhazip.com"] "wan" 30
                  , Run Com "echo" ["WAN:"] "print_WAN" 0
                  , Run Com "lan.sh" [] "lan" 10
                  , Run Com "echo" ["LAN:"] "print_LAN" 0

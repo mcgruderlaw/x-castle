@@ -230,7 +230,7 @@ myStartupHook = do
     --ewmhDesktopsStartup
     --spawnOn "1" "qt.sh"
     --spawnOn "main" "emacs-26 --daemon"
-    spawnOn "1" "firefox"
+    --spawnOn "1" "firefox"
     spawnOn "1" "emacs"
     --spawnOn "bt" "xterm -e transmission-daemon"
     --spawnOn "rss" "xterm -e newsboat"

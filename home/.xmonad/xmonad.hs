@@ -219,7 +219,7 @@ myManageHook = composeAll
      [ className =? "qutebrowser" --> doShift "1"
      , className =? "mpv" --> doFloat
      , className =? "feh" --> doFloat
-     , className =? "emacsclient-emacs-26 -nc" --> doFloat
+     , className =? "Emacs" --> doFloat
      ]
 
 myEventHook = fadeWindowsEventHook {- ... -}

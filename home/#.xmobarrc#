@@ -1,6 +1,6 @@
 Config { font = "xft:DejaVu Sans Mono:size=9,xft:Monospace"
-    , bgColor = "#002b36" --"#000000"  --"#000000" --Solarized "#002b36" --white "#FAFAFA"
-    , fgColor = "#a8a8a8" --"#a8a8a8" "#000000"
+    , bgColor = "#002b36" j--"#000000"  --"#000000" --Solarized "#002b36" --white "#FAFAFA"
+    , fgColor = "#000000" --"#a8a8a8"
     --, position = Bottom
     , lowerOnStart = True
     , pickBroadest = True

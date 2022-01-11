@@ -177,9 +177,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , (( myModMask .|. shiftMask, xK_y), spawnHere "xterm -e mpsyt")
     , (( myModMask .|. shiftMask, xK_m), spawn "xterm -e mutt")
     , (( myModMask,               xK_d     ), withFocused (keysResizeWindow (-10,0) (1,1)))
-    , (( myModMask,               xK_semicolon     ), withFocused (keysResizeWindow (10,0) (1,1)))
+    , (( myModMask,               xK_i     ), withFocused (keysResizeWindow (10,0) (1,1)))
     , (( myModMask .|. shiftMask, xK_d     ), withFocused (keysResizeWindow (0,-10) (1,1)))
-    , (( myModMask .|. shiftMask, xK_semicolon     ), withFocused (keysResizeWindow (0,50) (1%2,1)))
+    , (( myModMask .|. shiftMask, xK_i     ), withFocused (keysResizeWindow (0,50) (1%2,1)))
     , (( myModMask,               xK_a     ), withFocused (keysMoveWindowTo (1900,1000) (1,1)))
     , (( myModMask,               xK_Right     ), withFocused (keysMoveWindow (10,0) ))
     , (( myModMask,               xK_Down     ), withFocused (keysMoveWindow (0,10) ))
@@ -193,7 +193,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
-myLayout = nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR ||| StackTile 1 (3/100) (2/3) ||| simpleFloat
+myLayout = tiledR ||| nobordersLayout ||| Mirror tiled
+    --myLayout = nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR ||| StackTile 1 (3/100) (2/3) ||| simpleFloat
     --myLayout = mkToggle (single REFLECTX) $
     --           mkToggle (single REFLECTY) $
     --               (tiled ||| tiledR ||| Mirror tiled ||| Full)
@@ -219,7 +220,7 @@ myManageHook = composeAll
      [ className =? "qutebrowser" --> doShift "1"
      , className =? "mpv" --> doFloat
      , className =? "feh" --> doFloat
-     , className =? "Emacs" --> doFloat
+     --, className =? "Emacs" --> doFloat
      ]
 
 myEventHook = fadeWindowsEventHook {- ... -}
@@ -230,8 +231,8 @@ myStartupHook = do
     --ewmhDesktopsStartup
     --spawnOn "1" "qt.sh"
     --spawnOn "main" "emacs-26 --daemon"
-    --spawnOn "1" "firefox"
-    spawnOn "1" "emacs"
+    spawnOn "9" "firefox"
+    --spawnOn "1" "emacs"
     --spawnOn "bt" "xterm -e transmission-daemon"
     --spawnOn "rss" "xterm -e newsboat"
     --spawnOn "wts" "xterm -e 'watch ts"

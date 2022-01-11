@@ -78,13 +78,13 @@ xterm*pointerColorForeground:S_base1
 
 ! Fonts ====================================================
 ! set font and fontsize
-!xterm*faceName: xft:DejaVu Sans Mono:size=12:antialias=on
+xterm*faceName: xft:DejaVu Sans Mono:size=9:antialias=on
 !XTerm*faceSize: 10
-xterm*font: xft:FantasqueSansMono:size=12:antialias=on
+!xterm*font: xft:FantasqueSansMono:size=12:antialias=on
 
 !xterm*faceSize1: 6
 ! VT Font Menu: Unreadable
-xterm*faceSize2: 8
+xterm*faceSize2: 9
 ! VT font menu: Tiny
 xterm*faceSize3: 10
 ! VT font menu: Medium

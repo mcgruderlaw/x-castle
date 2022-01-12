@@ -57,7 +57,7 @@ myConfig = def
     --, manageHook        = doCenterFloat <+> myManageHook
     , manageHook        = myManageHook <+> manageSpawn
     , handleEventHook   = myEventHook
-    , startupHook       = myStartupHook
+    --, startupHook       = myStartupHook
     , logHook           = myLogHook
     }
 

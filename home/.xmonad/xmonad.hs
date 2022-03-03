@@ -15,7 +15,7 @@ import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.FadeWindows
 import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.ManageHelpers (isFullscreen, isDialog,  doFullFloat, doCenterFloat, doRectFloat)
 import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.NoBorders
@@ -193,7 +193,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
-myLayout = tiledR ||| nobordersLayout ||| Mirror tiled
+myLayout = tiledR ||| nobordersLayout ||| Mirror tiled ||| simpleFloat
     --myLayout = nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR ||| StackTile 1 (3/100) (2/3) ||| simpleFloat
     --myLayout = mkToggle (single REFLECTX) $
     --           mkToggle (single REFLECTY) $
@@ -216,11 +216,11 @@ myLayout = tiledR ||| nobordersLayout ||| Mirror tiled
 
 nobordersLayout = smartBorders $ Full
 
-myManageHook = composeAll
+myManageHook = composeAll --composeAll --composeOne
      [ className =? "qutebrowser" --> doShift "1"
      , className =? "mpv" --> doFloat
      , className =? "feh" --> doFloat
-     --, className =? "Emacs" --> doFloat
+     , title =? "Helm" --> doRectFloat (W.RationalRect (1 % 4) (1 % 4) (1 % 2) (1 % 2))
      ]
 
 myEventHook = fadeWindowsEventHook {- ... -}

@@ -15,9 +15,9 @@ xterm*scaleHeight: 1.2
 
 ! Fonts ====================================================
 ! set font and fontsize
-!xterm*faceName: xft:DejaVu Sans Mono:size=10:antialias=on
+xterm*faceName: xft:DejaVu Sans Mono:size=10:antialias=on
 !xterm*font: xft:LiberationMono-Regular:size=12:antialias=on
-xterm*font: xft:FantasqueSansMono:size=12:antialias=on
+!xterm*font: xft:FantasqueSansMono:size=12:antialias=on
 !XTerm*faceSize: 11
 
 !xterm*faceSize1: 6

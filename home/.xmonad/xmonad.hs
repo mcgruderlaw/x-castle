@@ -124,8 +124,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 5%+ unmute")
 
     -- Brightness Control
-    , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 1")
-    , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 1")
+    , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
+    , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
 
     -- Move focus to the master window
     , ((myModMask,               xK_m     ), windows W.focusMaster  )
@@ -193,7 +193,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
-myLayout = tiledR ||| nobordersLayout ||| Mirror tiled ||| simpleFloat
+myLayout = nobordersLayout ||| tiledR ||| Mirror tiled ||| simpleFloat
     --myLayout = nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR ||| StackTile 1 (3/100) (2/3) ||| simpleFloat
     --myLayout = mkToggle (single REFLECTX) $
     --           mkToggle (single REFLECTY) $

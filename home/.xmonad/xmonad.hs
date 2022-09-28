@@ -124,8 +124,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 5%+ unmute")
 
     -- Brightness Control
-    , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
-    , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
+    --, ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
+    --, ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
+    , ((0, xF86XK_MonBrightnessDown), spawn "lux -s 5%")
+    , ((0, xF86XK_MonBrightnessUp), spawn "lux -a 5%")
 
     -- Move focus to the master window
     , ((myModMask,               xK_m     ), windows W.focusMaster  )
@@ -169,7 +171,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     --My Added Ones
     , (( myModMask, xK_f), safeSpawn "firefox" [])
     , (( myModMask, xK_w), spawn "qt.sh")
-    , (( myModMask, xK_e), spawn "emacs")
+    , (( myModMask, xK_e), spawn "emacsclient -c")
+    , (( myModMask .|. shiftMask, xK_e), spawn "emacsclient -t")
     , (( myModMask .|. shiftMask, xK_l ), spawnHere "xterm -e lawflash.sh")
     , (( myModMask .|. shiftMask, xK_w ), spawn "xterm -e w3m")
     , (( myModMask .|. shiftMask, xK_r), spawn "xterm -e ranger")

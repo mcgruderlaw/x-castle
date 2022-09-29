@@ -78,7 +78,8 @@ xterm*pointerColorForeground:S_base1
 
 ! Fonts ====================================================
 ! set font and fontsize
-xterm*faceName: xft:DejaVu Sans Mono:size=12:antialias=on
+!xterm*faceName: xft:DejaVu Sans Mono:size=12:antialias=on
+xterm*faceName: xft:Monaco:size=12:antialias=on
 !XTerm*faceSize: 10
 
 !xterm*faceSize1: 6

@@ -79,12 +79,12 @@ xterm*pointerColorForeground:S_base1
 ! Fonts ====================================================
 ! set font and fontsize
 !xterm*faceName: xft:DejaVu Sans Mono:size=12:antialias=on
-xterm*faceName: xft:Monaco:size=10:antialias=on
+xterm*faceName: xft:Monaco:size=9:antialias=on
 !XTerm*faceSize: 10
 
-!xterm*faceSize1: 6
+xterm*faceSize1: 6
 ! VT Font Menu: Unreadable
-!xterm*faceSize2: 8
+xterm*faceSize2: 9
 ! VT font menu: Tiny
 !xterm*faceSize3: 10
 ! VT font menu: Medium
@@ -96,9 +96,9 @@ xterm*faceSize6: 14
 ! My added "Huger" font
 xterm*faceSize7: 16
 !!! My added "Huger" font
-xterm*faceSize8: 22
+!xterm*faceSize8: 22
 !!! My added "Huger" font
-xterm*faceSize9: 25
+!xterm*faceSize9: 25
 
 
 ! Ensure that your locale is set up for UTF-8. If you do not use UTF-8, you may need to force xterm to more strictly follow your locale by setting

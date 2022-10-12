@@ -33,7 +33,7 @@ xterm*faceSize4: 11
 ! VT font menu: Large
 xterm*faceSize5: 12
 ! VT font menu: Huge
-xterm*faceSize6: 14
+!xterm*faceSize6: 14
 ! My added "Huger" font
 !xterm*faceSize7: 16
 !!! My added "Huger" font

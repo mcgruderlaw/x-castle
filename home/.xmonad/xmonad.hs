@@ -57,7 +57,7 @@ myConfig = def
     --, manageHook        = doCenterFloat <+> myManageHook
     , manageHook        = myManageHook <+> manageSpawn
     , handleEventHook   = myEventHook
-    --, startupHook       = myStartupHook
+    , startupHook       = myStartupHook
     , logHook           = myLogHook
     }
 
@@ -235,7 +235,7 @@ myStartupHook = do
     --spawnOn "1" "qt.sh"
     --spawnOn "main" "emacs-26 --daemon"
     spawnOn "9" "firefox"
-    --spawnOn "1" "emacs"
+    spawnOn "1" "emacsclient -c"
     --spawnOn "bt" "xterm -e transmission-daemon"
     --spawnOn "rss" "xterm -e newsboat"
     --spawnOn "wts" "xterm -e 'watch ts"

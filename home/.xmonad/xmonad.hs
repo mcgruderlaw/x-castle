@@ -38,6 +38,42 @@ import XMonad.Util.Run (safeSpawn)
 import qualified Data.Map as M
 import qualified XMonad.StackSet as W
 
+myStartupHook = do
+    --myStartupHook = ewmhDesktopsStartup
+    --myStartupHook :: X ()
+    --ewmhDesktopsStartup
+    --spawnOn "1" "qt.sh"
+    --spawnOn "main" "emacs-26 --daemon"
+    spawnOn "9" "firefox"
+    spawnOn "1" "emacsclient -c"
+    --spawnOn "bt" "xterm -e transmission-daemon"
+    --spawnOn "rss" "xterm -e newsboat"
+    --spawnOn "wts" "xterm -e 'watch ts"
+    --spawnOn "2" "urxvt"
+    --spawnOn "5" "mpv"
+    --spawnOn "www" "xterm -e w3m -v"
+    --spawnOn "Mail" "mutt"
+    --spawnOn "Music" "vimpc"
+
+--myWorkspaces = [ "main", "aux" ]
+--myWorkspaces = [ "emacs", "www", "bt", "mus", "rss", "wts", "1", "2", "3"]
+myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+--myWorkspaces = [ "Web", "Evernote", "Drafting", "Shell", "Mail", "Music", "IRC", "News", "Transmission", "Misc."]
+--myWorkspaces = [ "Web", "Drafting", "Shell1", "Shell2", "Mail", "Music", "IRC", "News", "Misc."]
+
+myManageHook = composeAll --composeAll --composeOne
+     [ className =? "qutebrowser" --> doShift "1"
+     , className =? "mpv" --> doFloat
+     , className =? "feh" --> doFloat
+     , title =? "Helm" --> doRectFloat (W.RationalRect (1 % 4) (1 % 4) (1 % 2) (1 % 2))
+     ]
+
+myEventHook = fadeWindowsEventHook {- ... -}
+myLogHook = fadeWindowsLogHook myFadeHook
+myFadeHook = composeAll [opacity 1.00
+                        , isUnfocused --> opacity 1.00
+                        ]
+
 main :: IO ()
 main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 myBar = "xmobar"
@@ -70,12 +106,6 @@ myBorderWidth   = 4
 myNormalBorderColor     = "#005f00" --"#000000"
 
 myFocusedBorderColor    = "#dc322f" --"#FFFFFF" "#dc322f" "#005f00" "#ff0000" "#222200"
-
---myWorkspaces = [ "main", "aux" ]
---myWorkspaces = [ "emacs", "www", "bt", "mus", "rss", "wts", "1", "2", "3"]
-myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
---myWorkspaces = [ "Web", "Evernote", "Drafting", "Shell", "Mail", "Music", "IRC", "News", "Transmission", "Misc."]
---myWorkspaces = [ "Web", "Drafting", "Shell1", "Shell2", "Mail", "Music", "IRC", "News", "Misc."]
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- github boylemic/configs
@@ -218,36 +248,3 @@ myLayout = nobordersLayout ||| tiledR ||| Mirror tiled ||| simpleFloat
                        delta = (3/100)
 
 nobordersLayout = smartBorders $ Full
-
-myManageHook = composeAll --composeAll --composeOne
-     [ className =? "qutebrowser" --> doShift "1"
-     , className =? "mpv" --> doFloat
-     , className =? "feh" --> doFloat
-     , title =? "Helm" --> doRectFloat (W.RationalRect (1 % 4) (1 % 4) (1 % 2) (1 % 2))
-     ]
-
-myEventHook = fadeWindowsEventHook {- ... -}
-
-myStartupHook = do
-    --myStartupHook = ewmhDesktopsStartup
-    --myStartupHook :: X ()
-    --ewmhDesktopsStartup
-    --spawnOn "1" "qt.sh"
-    --spawnOn "main" "emacs-26 --daemon"
-    spawnOn "9" "firefox"
-    spawnOn "1" "emacsclient -c"
-    --spawnOn "bt" "xterm -e transmission-daemon"
-    --spawnOn "rss" "xterm -e newsboat"
-    --spawnOn "wts" "xterm -e 'watch ts"
-    --spawnOn "2" "urxvt"
-    --spawnOn "5" "mpv"
-    --spawnOn "www" "xterm -e w3m -v"
-    --spawnOn "Mail" "mutt"
-    --spawnOn "Music" "vimpc"
-
-
-myLogHook = fadeWindowsLogHook myFadeHook
-
-myFadeHook = composeAll [opacity 1.00
-                        , isUnfocused --> opacity 1.00
-                        ]

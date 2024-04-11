@@ -1,3 +1,1 @@
-xterm*faceName: xft:Inconsolata:size=11:antialias=on
-xterm*termName: xterm-256color
-xterm*scaleHeight: 1.2
+../.homesick/repos/x-castle/home/.Xresources.d/xterm_solarized_dark~

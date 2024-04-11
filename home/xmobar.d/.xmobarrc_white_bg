@@ -1,8 +1,8 @@
 -- from babel
-  Config { font = "xft:JetBrains Mono:style=Thin Italic:size=10,xft:Monospace"
+  Config { font = "JetBrainsMono Semibold 8"
       , bgColor = "#FAFAFA" --"#000000"  --"#000000" --Solarized "#002b36" --white "#FAFAFA"
       , fgColor = "#000000" --"#a8a8a8" "#000000"
-      --, position = Bottom
+      , position = OnScreen 0 Top
       , lowerOnStart = True
       , pickBroadest = True
       --, hideOnStart = True
@@ -18,7 +18,8 @@
                    , Run Memory ["-t","M: <usedratio>%","-H","80","--high","#B22222"] 10
                    --, Run DiskU [("/", "Root:<usedp>%"), ("sda5", "Home:<usedbar>")] ["-L", "20", "-H", "50", "-m", "1", "-p", "3"] 20
                    , Run DiskU [("/", "Root:<usedp>%"), ("sda5", "Home:<usedp>%")] ["-L", "20", "-H", "50", "-m", "1", "-p", "3"] 20
-                   , Run Date "<fc=#a8a8a8>%a %m/%d %I:%M %P</fc>" "date" 10
+                   --, Run Date "<fc=#a8a8a8>%a %m/%d %I:%M %P</fc>" "date" 10
+                   , Run Date "<fc=#a8a8a8>%a %m/%d %H:%M:%S</fc>" "date" 10
                    --, Run MPD ["-t", "<artist> - <fc=#ffffff><title></fc> (<album>) <statei>", "--", "-P", ">>", "-Z", "=", "-S", "><"] 10
                    --, Run Mail [("E: ", "~/.mail/INBOX")] "mail"
                    , Run BatteryP ["BAT1"]

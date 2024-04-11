@@ -1,5 +1,5 @@
 -- from babel
-Config { font = "xft:JetBrains Mono:style=Thin Italic:size=10,xft:Monospace"
+Config { font = "JetBrainsMono 10"
     , bgColor = "#002b36" --"#000000"  --"#000000" --Solarized "#002b36" --white "#FAFAFA"
     , fgColor = "#a8a8a8" --"#a8a8a8" "#000000"
     --, position = Bottom

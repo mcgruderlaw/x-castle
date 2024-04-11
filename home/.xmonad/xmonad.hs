@@ -40,12 +40,12 @@ import qualified XMonad.StackSet as W
 
 myStartupHook = do
     --myStartupHook = ewmhDesktopsStartup
-    --myStartupHook :: X ()
+    myStartupHook :: X ()
     --ewmhDesktopsStartup
     --spawnOn "1" "qt.sh"
     --spawnOn "main" "emacs-26 --daemon"
-    spawnOn "9" "firefox"
-    spawnOn "1" "emacsclient -c"
+    --spawnOn "9" "firefox"
+    spawnOn "1" "emacsclient --socket-name='/tmp/emacs1000/server' -c"
     --spawnOn "bt" "xterm -e transmission-daemon"
     --spawnOn "rss" "xterm -e newsboat"
     --spawnOn "wts" "xterm -e 'watch ts"
@@ -93,7 +93,7 @@ myConfig = def
     --, manageHook        = doCenterFloat <+> myManageHook
     , manageHook        = myManageHook <+> manageSpawn
     , handleEventHook   = myEventHook
-    , startupHook       = myStartupHook
+    --, startupHook       = myStartupHook
     , logHook           = myLogHook
     }
 
@@ -201,8 +201,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     --My Added Ones
     , (( myModMask, xK_f), safeSpawn "firefox" [])
     , (( myModMask, xK_w), spawn "qt.sh")
-    , (( myModMask, xK_e), spawn "emacsclient -c")
-    , (( myModMask .|. shiftMask, xK_e), spawn "emacsclient -t")
+    , (( myModMask, xK_e), spawn "emacsclient --socket-name='/tmp/emacs1000/server' -c")
+    , (( myModMask .|. shiftMask, xK_e), spawn "emacsclient --socket-name='/tmp/emacs1000/server' -t")
     , (( myModMask .|. shiftMask, xK_l ), spawnHere "xterm -e lawflash.sh")
     , (( myModMask .|. shiftMask, xK_w ), spawn "xterm -e w3m")
     , (( myModMask .|. shiftMask, xK_r), spawn "xterm -e ranger")
@@ -226,7 +226,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
-myLayout = nobordersLayout ||| tiledR ||| Mirror tiled ||| simpleFloat
+myLayout = nobordersLayout ||| Mirror tiled ||| tiledR ||| simpleFloat
     --myLayout = nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR ||| StackTile 1 (3/100) (2/3) ||| simpleFloat
     --myLayout = mkToggle (single REFLECTX) $
     --           mkToggle (single REFLECTY) $

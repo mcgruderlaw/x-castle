@@ -1,0 +1,78 @@
+#!/bin/sh
+#
+# ~/.xinitrc
+#
+# Executed by startx (run your window manager from here)
+
+
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
+[[ -f ~/.Xresources ]] && xrdb -I$HOME ~/.Xresources
+
+# From Gentoo Wiki
+# https://wiki.gentoo.org/wiki/GnuPG#Using_a_GPG_agent
+if [ -x /usr/bin/gpg-agent ]; then
+ eval "$(/usr/bin/gpg-agent --daemon)"
+fi
+
+if [ -n "${GPG_AGENT_INFO}" ]; then
+  kill $(echo ${GPG_AGENT_INFO} | cut -d':' -f 2) >/dev/null 2>&1
+fi
+
+
+# xrdb ~/.Xresources
+# xrdb ~/.homesick/repos/x-castle/home/.xresources/.Xresources.connermcd
+
+#xmodmap ~/.Xmodmap
+#xmodmap ~/.Xmodmap
+
+###########################unclutter -grab &
+
+# xcompmgr -cCfF -r7 -o 0.25 -l-10 -t-8 -D7 &
+############################xcompmgr -r7 -o 0.25 -l-10 -t-8 -D7 &
+#devilspie -a &
+
+# canto-fetch -db
+
+# dropboxd
+
+#eval $(ssh-agent)
+
+# sh ~/.bin/.fehbg &
+
+#########################/usr/bin/VBoxClient-all
+
+xset +fp /usr/share/fonts/dejavu/
+
+[ $HOSTNAME == 'ideapad' ] && pulseaudio --start && start-pulseaudio-x11 &
+
+# dwmstatus 2>&1 >/dev/null &
+slstatus &
+
+# exec gnome-session
+# exec ck-launch-session dbus-launch --sh-syntax --exit-with-session startkde
+# exec startxfce4
+# exec awesome
+# exec xterm -e emacs &
+##exec xterm -e ranger &
+# exec firefox
+# exec xterm
+#exec /usr/bin/xterm -g 80x50
+#exec /usr/bin/xterm -g 1220x60 #120x680
+#exec /usr/bin/tmux
+# ...or the Window Manager of your choice
+# exec urxvt -g 174x31
+# exec urxvt -g 136x26
+# exec dbus-launch --exit-with-session emacs-27-vcs -fs
+# exec dbus-launch --exit-with-session emacs-27-vcs
+# exec dbus-launch --exit-with-session emacs-27-vcs --daemon -f exwm-enable &
+# exec dbus-launch --exit-with-session emacs-26 --daemon -f exwm-enable &
+# exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
+# exec ck-launch-session dbus-launch --sh-syntax --exit-with-session dwm
+# exec dbus-launch --exit-with-session dwm
+exec dbus-launch --sh-syntax --exit-with-session xmonad

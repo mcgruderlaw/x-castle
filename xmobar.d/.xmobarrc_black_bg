@@ -1,0 +1,41 @@
+-- from babel
+Config { font = "JetBrainsMono SemiBold 8"
+    , bgColor = "#000000" --"#000000"  --"#000000" --Solarized "#002b36" --white "#FAFAFA"
+    , fgColor = "#a8a8a8" --"#a8a8a8" "#000000"
+    , position = OnScreen 0 Top
+    , lowerOnStart = True
+    , pickBroadest = True
+    --, hideOnStart = True
+    , sepChar = "%"
+    , alignSep = "}{"
+    --    , template = "%StdinReader% }{ %mpd% | %mail% %battery% %multicpu% %memory% %disku% | %wlan0%%eth0% | %date% "
+    --    , template = "%StdinReader% }{ %mpd% | %battery% %multicpu% %memory% %disku% | %enp4s0% | %date% "
+    , template = "%StdinReader% }{ %battery% %multicpu% %memory% %disku% | %print_WAN% %wan% | %print_LAN% %lan% | %uptime% | %enp2s0% | %wlp3s0% | %tun0% | %date% "
+    , commands = [ Run Network "enp2s0" ["-t", "<fc=#556B2F><rx> ↓</fc> <fc=#B22222><tx> ↑</fc>","-S","True"] 10
+                 , Run Network "wlp3s0" ["-t", "<fc=#556B2F><rx> ↓</fc> <fc=#B22222><tx> ↑</fc>","-S","True"] 10
+                 , Run Network "tun0" ["-t", "<fc=#556B2F><rx> ↓</fc> <fc=#B22222><tx> ↑</fc>","-S","True"] 10
+                 , Run MultiCpu ["-t", "C: <total>%", "-H","50","--high","#B22222"] 10
+                 , Run Memory ["-t","M: <usedratio>%","-H","80","--high","#B22222"] 10
+                 --, Run DiskU [("/", "Root:<usedp>%"), ("sda5", "Home:<usedbar>")] ["-L", "20", "-H", "50", "-m", "1", "-p", "3"] 20
+                 , Run DiskU [("/", "Root:<usedp>%"), ("sda5", "Home:<usedp>%")] ["-L", "20", "-H", "50", "-m", "1", "-p", "3"] 20
+                 --, Run Date "<fc=#a8a8a8>%a %m/%d %I:%M %P</fc>" "date" 10
+                 , Run Date "<fc=#a8a8a8>%a %m/%d %H:%M:%S</fc>" "date" 10
+                 --, Run MPD ["-t", "<artist> - <fc=#ffffff><title></fc> (<album>) <statei>", "--", "-P", ">>", "-Z", "=", "-S", "><"] 10
+                 --, Run Mail [("E: ", "~/.mail/INBOX")] "mail"
+                 , Run BatteryP ["BAT1"]
+                                ["-t", "<acstatus><watts> <timeleft> <left>%",
+                                 "-L", "10", "-H", "80", "-p", "3",
+                                 "--", "-O", "<fc=green>On</fc> - ", "-o", "",
+                                 "-L", "-15", "-H", "-5",
+                                 "-l", "red", "-m", "blue", "-h", "green"]
+                                100
+                 , Run Com "curl" ["icanhazip.com"] "wan" 30
+                 , Run Com "echo" ["WAN:"] "print_WAN" 0
+                 , Run Com "lan.sh" [] "lan" 10
+                 , Run Com "echo" ["LAN:"] "print_LAN" 0
+                 , Run Uptime ["-t", "<days>, <hours>, <minutes>", "-S", "True"] 10
+                 , Run StdinReader
+                 ]
+}
+
+-- vim: ft=haskell

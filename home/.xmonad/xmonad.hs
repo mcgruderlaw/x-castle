@@ -110,7 +110,8 @@ myFocusedBorderColor    = "#dc322f" --"#FFFFFF" "#dc322f" "#005f00" "#ff0000" "#
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- github boylemic/configs
     -- launch a terminal
-    [ ((myModMask,              xK_Return), spawnHere "xterm")
+    [ ((myModMask,                  xK_Return), spawnHere "xterm")
+    , ((myModMask .|. shiftMask,    xK_t), spawnHere "sudo su -c 'xterm'")
 
     -- launch dmenu
     --, ((myModMask,               xK_d     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
@@ -226,7 +227,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
-myLayout = nobordersLayout ||| Mirror tiled ||| tiledR ||| simpleFloat
+-- myLayout = nobordersLayout ||| Mirror tiled ||| tiledR ||| simpleFloat
+myLayout = tiledR ||| Mirror tiled ||| nobordersLayout ||| simpleFloat
     --myLayout = nobordersLayout ||| Mirror tiled ||| tiled ||| tiledR ||| StackTile 1 (3/100) (2/3) ||| simpleFloat
     --myLayout = mkToggle (single REFLECTX) $
     --           mkToggle (single REFLECTY) $

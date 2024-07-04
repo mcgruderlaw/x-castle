@@ -17,7 +17,7 @@ xterm*scaleHeight: 1.2
 ! set font and fontsize
 !xterm*faceName: xft:DejaVu Sans Mono:size=10:antialias=on
 !xterm*faceName: xft:Monaco:size=8:antialias=on
-xterm*faceName: xft:JetBrains Mono:style=SemiBold Italic:size=12:antialias=on
+xterm*faceName: xft:JetBrains Mono:style=SemiBold Italic:size=10:antialias=on
 !xterm*font: xft:LiberationMono-Regular:size=12:antialias=on
 !xterm*font: xft:FantasqueSansMono:size=12:antialias=on
 !XTerm*faceSize: 11

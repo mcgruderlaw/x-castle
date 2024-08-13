@@ -103,9 +103,9 @@ myModMask       = mod4Mask
 
 myBorderWidth   = 4
 
-myNormalBorderColor     = "#005f00" --"#000000"
+myNormalBorderColor     = "#000000" --"#000000" "#005f00, green"
 
-myFocusedBorderColor    = "#dc322f" --"#FFFFFF" "#dc322f" "#005f00" "#ff0000" "#222200"
+myFocusedBorderColor    = "#005f00" --"#FFFFFF" "#dc322f, red" "#005f00, green" "#ff0000" "#222200"
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- github boylemic/configs
@@ -207,7 +207,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , (( myModMask .|. shiftMask, xK_l ), spawnHere "xterm -e lawflash.sh")
     , (( myModMask .|. shiftMask, xK_w ), spawn "xterm -e w3m")
     , (( myModMask .|. shiftMask, xK_r), spawn "xterm -e ranger")
-    , (( myModMask .|. shiftMask, xK_n ), spawn "xterm -e newsboat")
+    , (( myModMask .|. shiftMask, xK_g ), safeSpawn "dunstctl" ["close-all"])
     , (( myModMask .|. shiftMask, xK_y), spawnHere "xterm -e mpsyt")
     , (( myModMask .|. shiftMask, xK_m), spawn "xterm -e mutt")
     , (( myModMask,               xK_d     ), withFocused (keysResizeWindow (-10,0) (1,1)))

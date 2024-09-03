@@ -101,7 +101,7 @@ myTerminal      = "xterm"
 
 myModMask       = mod4Mask
 
-myBorderWidth   = 1
+myBorderWidth   = 3
 
 myNormalBorderColor     = "#000000" --"#000000" "#005f00, green"
 

@@ -1,5 +1,5 @@
 -- from babel
-  Config { font = "JetBrainsMono Semibold 8"
+  Config { font = "JetBrainsMono Semibold 10"
       , bgColor = "#FAFAFA" --"#000000"  --"#000000" --Solarized "#002b36" --white "#FAFAFA"
       , fgColor = "#000000" --"#a8a8a8" "#000000"
       , position = OnScreen 0 Top

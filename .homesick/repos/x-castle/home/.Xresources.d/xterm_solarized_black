@@ -12,7 +12,7 @@
 XTerm.termName: xterm-256color
 
 
-xterm*scaleHeight: 1.2
+xterm*scaleHeight: 1.0
 !xterm*vt100*geometry: 80x50
 !xterm*geometry: 173x35+0+0
 xterm*SmeBSB: toolbar
@@ -81,7 +81,7 @@ xterm*pointerColorForeground:S_base1
 ! set font and fontsize
 !xterm*faceName: xft:DejaVu Sans Mono:size=12:antialias=on
 !xterm*faceName: xft:Monaco:size=8:antialias=on
-xterm*faceName: xft:JetBrains Mono:style=Italic:size=13:antialias=on
+xterm*faceName: xft:JetBrains Mono:size=9:antialias=on
 !XTerm*faceSize: 10
 
 xterm*faceSize1: 8

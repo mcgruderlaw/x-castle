@@ -101,7 +101,7 @@ myTerminal      = "xterm"
 
 myModMask       = mod4Mask
 
-myBorderWidth   = 3
+myBorderWidth   = 6
 
 myNormalBorderColor     = "#000000" --"#000000" "#005f00, green"
 
@@ -200,7 +200,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((myModMask              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
 
     --My Added Ones
-    , (( myModMask, xK_f), safeSpawn "firefox" [])
+    , (( myModMask, xK_f), safeSpawn "firefox-bin" [])
     , (( myModMask, xK_w), spawn "qt.sh")
     , (( myModMask, xK_e), spawn "emacsclient --socket-name='/tmp/emacs1000/server' -c")
     , (( myModMask .|. shiftMask, xK_e), spawn "emacsclient --socket-name='/tmp/emacs1000/server' -t")

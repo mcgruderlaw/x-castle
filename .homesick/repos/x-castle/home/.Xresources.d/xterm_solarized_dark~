@@ -1,0 +1,3 @@
+xterm*faceName: xft:Inconsolata:size=11:antialias=on
+xterm*termName: xterm-256color
+xterm*scaleHeight: 1.2
